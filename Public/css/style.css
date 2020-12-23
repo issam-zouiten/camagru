@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Langar');
+html {
+  font-size: 62.5%;
+}
+body{
+    background-image: url(https://images.pexels.com/photos/1291515/pexels-photo-1291515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    color: #D3D3D3;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.navbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    height: 5vh;
+    z-index: 99999;
+  }
+  
+  .navbar.fixed-top.navbar-dark .navbar-nav .nav-link.active {
+    color: #C0CA33;
+  }
+  .navbar.fixed-top.navbar-dark .navbar-nav .nav-link::after {
+    background-color: #C0CA33;
+  }
+  @media screen and (max-width: 790px) {
+    .navbar-brand {
+      margin-left: 20px;
+    }
+    .navbar-nav {
+      padding: 0 20px;
+      background-color: rgba(0, 0, 0, .9);
+    }
+    .navbar.fixed-top .navbar-nav {
+      background: transparent;
+    }
+  }
+  .navbar .navbar-brand {
+    font-family: 'Langar', cursive;
+    font-size: 3.5rem;
+    color: #C0C0C0;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    position: relative;
+    color: #fff;
+    font-size: 2.2rem;
+  }
+  .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff;
+  }
+    .navbar-dark .navbar-nav .nav-link {
+      padding: 23px 15px;
+    }
+    .navbar-dark .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 15px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background-color: #fff;
+      -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
+      transform: scaleX(0);
+      transition: transform 0.1s ease-in;
+    }
+    .navbar-dark .navbar-nav .nav-link:hover::after {
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  .bo{
+      position: relative;
+      top: 10vh;
+      left: 28vw;
+      height: 50%;
+      width: 40%;
+  }
+  .container{
+    max-width: 2440px;
+}
