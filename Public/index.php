@@ -1,4 +1,4 @@
 <?php
-    require_once '../App/bootstrap.php';
+    require_once '../app/require.php';
 
-    $init = new core;
+    $init = new Url();

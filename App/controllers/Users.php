@@ -1,154 +1,271 @@
 <?php
-    class Users extends Controller
-    {
+
+    class Users extends Controller{
+
         public function __construct()
         {
-            $this->usermodel = $this->model('User');
+            $this->userModel = $this->model('User');
+            $this->postModel = $this->model('Post');
 
         }
 
-        public function register()
-        {
-            //chock for post
+        public function signup() {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
-                //process form
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $token = openssl_random_pseudo_bytes(16);
+                $token = bin2hex($token);
                 $data = [
-                    'name' => trim($_POST['name']),
+                    'fullname' => trim($_POST['fullname']),
                     'email' => trim($_POST['email']),
+                    'username' => trim($_POST['username']),
                     'password' => trim($_POST['password']),
-                    'confirm_password' => trim($_POST['confirm_password']),
-                    'name_err' => '',
-                    'email_err' => '',
-                    'password_err' => '',
-                    'confirm_password_err' => ''
+                    'confirm_pwd' => trim($_POST['confirmPwd']),
+                    'token' => $token,
+                    'err_fullname' => '',
+                    'err_email' => '',
+                    'err_username' => '',
+                    'err_password' => '',
+                    'err_confirmPwd' => ''
                 ];
 
-                //validate email
-                if(empty($data['email']))
-                {
-                    $data['email_err'] = 'Please enter your email';
-                }
+                if (empty($data['fullname']))
+                    $data['err_fullname'] = 'please enter fullname !!';
+                if (empty($data['email']))
+                    $data['err_email'] = 'please enter email !!';
                 else
                 {
-                    //check email
-                    if ($this->usermodel->finduserbyemail($data['email']))
-                        $data['email_err'] = 'Email is already taken';
-                        
+                    if($this->userModel->findUsrByEmail($data['email']))
+                        $data['err_email'] = 'Email is already taken !!';
                 }
-                //echo "eror" . $data['email_err'];
-                //validate name
-                if(empty($data['name']))
-                {
-                    $data['name_err'] = 'Please enter your name';
-                }
-                //validate password
-                if(empty($data['password']))
-                {
-                    $data['password_err'] = 'Please enter your password';
-                }
-                else if(strlen($data['password']) < 6)
-                {
-                    $data['password_err'] = 'Password must be at least 6 charachters';
-                }
-                //validate confirm password
-                if(empty($data['confirm_password']))
-                {
-                    $data['confirm_password_err'] = 'Please confirm your password';
-                }
+                if (empty($data['username']))
+                    $data['err_username'] = 'please enter username !!';
                 else
                 {
-                    if ($data['password'] != $data['confirm_password'])
-                    {
-                        $data['confirm_password_err'] = 'Password do not match';   
-                    }
+                    if($this->userModel->findUsrByUsername($data['username']))
+                        $data['err_username'] = 'Username is already taken !!';
                 }
-                //make sure errors are empty
-                if (empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err']))
+                if (empty($data['password']))
+                    $data['err_password'] = 'please enter password !!';
+                else if (strlen($data['password']) < 6)
+                    $data['err_password'] = 'Password must be at least 6 characters';
+                else if (!preg_match('@[A-Z]@', $data['password']))
+                    $data['err_password'] = 'Password must contain an upper case';
+                else if (!preg_match('@[a-z]@', $data['password']))
+                    $data['err_password'] = 'Password must contain a  lower case';
+                else if (!preg_match('@[0-9]@', $data['password']))
+                    $data['err_password'] = 'Password must contain a number';
+                if ($data['password'] != $data['confirm_pwd'])
+                    $data['err_confirmPwd'] = 'Passwords do not match !!';
+
+                if (empty($data['err_fullname']) && empty($data['err_email']) && empty($data['err_username']) &&
+                    empty($data['err_password']) && empty($data['err_confirmPwd']))
                 {
-                    //hash password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    //load view with errors
-                    //$this->view('users/register', $data);
-                    // register uder
-                    if ($this->usermodel->register($data))
-                        redirect('users/login');
+                    if ($this->userModel->signup($data))
+                    {
+                        $to_email = $data['email'];
+                        $subject = "Verify you email";
+                        $token = $data['token'];
+                        $body = '<p><h1>Welcome to Camagru</h1>,
+                            <br /><br />
+                            <br/>
+                            To verify your account click here 
+                            <a href="http://localhost/Camagru/users/verification/?token='.$token.'">click here.</a>
+                            </p>
+                            <p>
+                                <br />--------------------------------------------------------
+                                <br />This is an automatic mail , please do not reply.
+                            </p>';
+                        $headers = "Content-type:text/html;charset=UTF-8" . "\r\n";
+                        $headers .= 'From: <oes-safi@Camagru.ma>' . "\r\n";    
+                        if (mail($to_email, $subject, $body, $headers))
+                                pop_up('signup_ok', 'You are now part of our community, Verify your email to login');
+                            else
+                                pop_up('signup_ok', 'Can not send email verificaton, please retry');
+                            redirect('users/login');   
+                    }
                     else
-                        die('tkhawr');
-                }
+                        die('wrong');
+                }                   
                 else
-                    $this->view('users/register', $data);
+                    $this->view('users/signup', $data);
             }
             else
             {
-                //init data
                 $data = [
-                    'name' => '',
+                    'fullname' => '',
                     'email' => '',
+                    'username' => '',
                     'password' => '',
-                    'confirm_password' => '',
-                    'name_err' => '',
-                    'email_err' => '',
-                    'password_err' => '',
-                    'confirm_password_err' => ''
+                    'confirm_pwd' => '',
+                    'token' => '',
+                    'err_name' => '',
+                    'err_email' => '',
+                    'err_username' => '',
+                    'err_password' => '',
+                    'err_confirm-pwd' => ''
                 ];
-                //load view
-                $this->view('users/register', $data);
+
+                $this->view('users/signup', $data);
             }
         }
 
-        public function login()
-        {
-            //chock for post
+        public function login() {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
-                //process form
-                //process form
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
-                    'email' => trim($_POST['email']),
+                    'username' => trim($_POST['username']),
                     'password' => trim($_POST['password']),
-                    'email_err' => '',
-                    'password_err' => '',
+                    'err_username' => '',
+                    'err_password' => '',
                 ];
 
-                //validate email
-                if(empty($data['email']))
-                {
-                    $data['email_err'] = 'Please enter your email';
-                }
-                //validate password
-                if(empty($data['password']))
-                {
-                    $data['password_err'] = 'Please enter your password';
-                }
+                if (empty($data['username']))
+                    $data['err_username'] = 'please enter username !!';
+                else if(!$this->userModel->findUsrByUsername($data['username']))
+                    $data['err_username'] = 'Username doest not exist !!';
+                if (empty($data['password']))
+                    $data['err_password'] = 'please enter password !!';
 
-                //make sure errors are empty
-                if (empty($data['email_err']) && empty($data['password_err']))
+                if (empty($data['err_username']) && empty($data['err_password']))
                 {
-                    die('SUCCESS');
+                    $loggedUser = $this->userModel->login($data['username'], $data['password']);
+                    if ($loggedUser)
+                    {
+                        if($loggedUser->verified)
+                            $this->createUserSession($loggedUser);
+                        else
+                        {
+                            pop_up('not_verified', 'Please verify you email !!', 'alert alert-danger');
+                            redirect('users/login');
+                        }
+                    }
+                    else
+                    {
+                        $data['err_password'] = 'Invalid password !!';
+                        $this->view('users/login', $data);
+                    }   
                 }
                 else
-                {
-                    //load view with errors
                     $this->view('users/login', $data);
-                }
             }
             else
             {
-                //init data
                 $data = [
-                    'email' => '',
+                    'username' => '',
                     'password' => '',
-                    'email_err' => '',
-                    'password_err' => '',
+                    'err_username' => '',
+                    'err_password' => '',
                 ];
-                //load view
+
                 $this->view('users/login', $data);
             }
         }
 
+        public function logout()
+        {
+            unset($_SESSION['userid']);
+            unset($_SESSION['user_email']);
+            unset($_SESSION['user_username']);
+            unset($_SESSION['user_fullname']);
+
+            session_destroy();
+            redirect('users/login');
+        }
+
+        public function createUserSession($user)
+        {
+            $_SESSION['user_id'] = $user->id;
+            $_SESSION['user_email'] = $user->email;
+            $_SESSION['user_username'] = $user->username;
+            $_SESSION['user_fullname'] = $user->fullname;
+            $_SESSION['user_img'] = $user->profile_img;
+
+            redirect('posts');
+        }
+
+        public function verification()
+        {
+            if (isset($_GET['token']))
+            {
+                $token = $_GET['token'];
+                
+                if ($this->userModel->verify($token))
+                {
+                    pop_up('signup_ok', 'Your account is verified succesfully');
+                    redirect('users/login');
+                }
+            }
+            else
+                die('error');
+        }
+        
+        public function profile() {
+            $post = $this->postModel->getPosts();
+            $data = [
+                'username' => $_SESSION['username'],
+                'posts' =>$post
+            ];
+            
+            $this->view('users/profile', $data);
+        }
+
+        public function update_user() {
+            
+            $data = [
+                'id' => $_SESSION['user_id'],
+            ];
+            if(!empty($_POST['new_username']))
+            {
+                if($this->userModel->update_username($_POST['new_username'], $data['id']))
+                {
+                    pop_up('updated', 'Username updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
+                    $_SESSION['user_username'] = $_POST['new_username'];
+                    redirect('users/profile');
+                }
+            }
+            else
+                redirect('users/profile');
+
+            if(!empty($_POST['new_fullname']))
+            {
+                if($this->userModel->update_fullname($_POST['new_fullname'], $data['id']))
+                {
+                    pop_up('updated', 'Fullname updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
+                    $_SESSION['user_fullname'] = $_POST['new_fullname'];
+                    redirect('users/profile');
+                }
+            }
+            else
+                redirect('users/profile');
+            
+            if(!empty($_POST['new_email']))
+            {
+                if($this->userModel->update_email($_POST['new_email'], $data['id']))
+                {
+                    pop_up('updated', 'You need to verify the new email ✓', 'pop alert alert-success w-50 mx-auto text-center');
+                    $_SESSION['user_fullname'] = $_POST['new_fullname'];
+                    redirect('users/profile');
+                }
+            }
+            else
+                redirect('users/profile');
+            
+            if(!empty($_POST['new_password']))
+            {
+                $_POST['new_password'] = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+                if($this->userModel->update_pass($_POST['new_password'], $data['id']))
+                {
+                    pop_up('updated', 'Password updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
+                    redirect('users/profile');
+                }
+            }
+            else
+                redirect('users/profile');
+
+        }
     }
