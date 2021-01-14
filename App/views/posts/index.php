@@ -3,7 +3,7 @@
     require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
 ?>
 
-<div class="row w-75">
+<div class="row w-7">
     <?php foreach($data['posts'] as $post) : ?>
         <div class="card card-body mx-2 mb-4 " style="min-width: 18rem; max-width: 18rem; ">
             <div class="d-flex justify-content-left h-auto mb-3 mx-2">
