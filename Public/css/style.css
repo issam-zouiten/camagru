@@ -10,28 +10,37 @@ body {
 }
 
 #logo {
-	font-family: 'Tangerine', serif;
-	font-size: 60px;
+	font-family: Billabong;
+	font-size: 50px;
 	text-decoration:none;
 }
 
 .rounded-circle {
-	width: 5%;
-	height: 5%;
+	width: 2.5vw;
+	height: 2.5vw;
+}
+
+.rounded-circlea {
+	border-radius: 100%;
 }
 
 .create_date {
 	color: lightgrey;
-}
-
-#cam {
-	height: 80vh;
+	float:right;
 }
 
 .profile {
 	width: 40px;
 }
 
+.camera {
+	margin-right: 2rem;
+	width: 50%;
+}
+
+.image {
+	width: 50%;
+}
 
 .buttons {
 	width: 60%;
@@ -97,9 +106,10 @@ label {
 	width: 70%;
 }
 
-.card-img-top {
-	border: 1px solid grey;
+.user-img {
+    margin-top: 4px
 }
+
 
 i {
 	width: 30px;
@@ -108,6 +118,10 @@ i {
 
 #edit_div {
 	display: none;
+}
+
+#thum {
+	height: 20rem;
 }
 
 .column {
@@ -122,14 +136,14 @@ i {
 }
 
 .edit-btn {
-	width: 50%;
+	width: 40%;
 }
 
 .del-btn {
 	width: 40%;
 }
 .gallery {
-	width: 25%;
+	width: 33.33%;
 	min-width: 200px;
 	min-height: auto;
 }
@@ -137,29 +151,112 @@ i {
 	width: 25%;
 }
 .profile-pic {
-	min-height: auto;
+	border-radius: 50%;
+	width: 13vw;
+	height: 13vw;
+	object-fit: cover;
 
 }
 .update-btn {
-	width: 70%;
+	width: 60%;
 }
 .cancel-btn {
-	width: 30%;
+	width: 40%;
 }
 
 .post-user {
-  	width: 7%;
-  	height: auto
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;  
+	border: 1px solid black;
+	object-fit: cover;
 }
+
+.out-btn {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.list-out-btn {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.cam-btn {
+	width: 2rem;
+	height: 2rem;
+}
+
+.list-cam-btn {
+	width: 2rem;
+	height: 2rem;
+}
+
+.profile-btn {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.list-profile-btn {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.list-btn {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+}
+
+.list-toggle {
+	display: none;
+}
+
+.gallery-container {
+	width: 70%;
+}
+
+.post-container {
+	width: 60%;
+	height: 60rem;
+}
+.post-img {
+	width: 100%;
+	height: 50rem;
+	object-fit: cover;
+}
+
+.liste {
+	display: none;
+	position: absolute;
+	right: 10%;
+	top: 15%;
+	background-color: whitesmoke;
+	border: 1px solid black;
+	width: 10rem;
+}
+.liste ul {
+	list-style: none;
+}
+
+.liste ul li a {
+	text-decoration: none;
+}
+
+
 .pr{
 	position: absolute;
-	right: 10.5vw;
-	top: 3vh;
+	right: -3vw;
+	top: 6vh;
 }
-.profi .mono {
+.mono {
 	position: absolute;
-	top: 8.5vh;
-	right: 1.5vw;
+	top: 85px;
+	right: 0vw;
 	padding: 10px 20px;
 	background: #fff;
 	width: 215px;
@@ -170,22 +267,26 @@ i {
 	visibility: hidden;
 	opacity: 0;
 }
-.profi .mono.active {
+.mono.active {
 	visibility: visible;
 	opacity: 1;
 }
-.profi .mono::before{
+.mono.desactive {
+	visibility: hidden;
+	opacity: 0;
+}
+.mono::before{
 	content: '';
 	position: absolute;
 	top: -2px;
-	right: 9.5vw;
+	right: 2vw;
 	width: 20px;
 	height: 20px;
 	background: #fff;
 	transform: rotate(45deg);
 	
 }
-.profi .mono h3 {
+.mono h3 {
 	width: 100%;
 	text-align: center;
 	font-size: 18px;
@@ -194,12 +295,12 @@ i {
 	color: #555;
 	line-height: 1.2em;
 }
-.profi .mono h3 span{
+.mono h3 span{
 	font-size: 14px;
 	color: #cecece;
 	font-weight: 400;
 }
-.profi .mono ul li{
+.mono ul li{
 	list-style: none;
 	padding: 10px 0;
 	border-top: 1px solid rgba(0,0,0,0.05);
@@ -207,23 +308,23 @@ i {
 	align-items: center;
 	justify-content: center;
 }
-.profi .mono ul li img{
+.mono ul li img{
 	max-width: 20px;
 	margin-right: 10px;
 	opacity: 0.5;
 	transition: 0.5s;
 }
-.profi .mono ul li:hover img{
+.mono ul li:hover img{
 	opacity: 1;
 }
-.profi .mono ul li a{
+.mono ul li a{
 	display: inline-block;
 	text-decoration: none;
 	color: #555;
 	font-weight: 500;
 	transition: 0.5s;
 }
-.profi .mono ul li a:hover a{
+.mono ul li a:hover a{
 color: #ff5d94;
 }
 
@@ -244,3 +345,65 @@ ul.pagination li a {
 
 ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
+.comment{
+	
+	position: absolute;
+	background-color: black;
+	height: auto;
+	width: auto;
+	right: 8vw;
+}
+
+
+@media screen and (min-width:768px) {
+	
+	.card-bodya{
+		width:30%;
+	}
+	.pr{
+		position: absolute;
+		right: 0vw;
+		top: 4vh;
+	}
+	
+}
+@media screen and (max-width:768px) {
+	
+	.comment{
+		position: relative;
+	}
+	
+}
+.card{
+	overflow: hidden;
+	border: 0 !important;
+	border-radius: 20px !important;
+	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .img-left{
+	width: 50%;
+	background-size: cover;
+  }
+  
+  .card-body{
+	padding: 1rem;
+  }
+  
+  .title{
+	margin-bottom: 0rem;
+	font-size: 1rem;
+  }
+
+@media screen and (min-width: 576px) {
+    .title { font-size: 1.25rem; }
+}
+@media screen and (min-width: 768px) {
+    .title { font-size: 1.5rem; }
+}
+@media screen and (min-width: 992px) {
+    .title { font-size: 1.75rem; }
+}
+@media screen and (min-width: 1200px) {
+    .title { font-size: 2rem; }
+}

@@ -3,18 +3,35 @@
     require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
 ?>
 
-<div class="row w-7">
     <?php foreach($data['posts'] as $post) : ?>
-        <div class="card card-body mx-2 mb-4 " style="min-width: 18rem; max-width: 18rem; ">
-            <div class="d-flex justify-content-left h-auto mb-3 mx-2">
-                <img class="post-user rounded-circle shadow my-auto" src="<?php echo $post->profile_img ?>" alt="profile">
-                <h6 class="card-title mx-2 my-auto h-auto"><?php echo $post->username; ?></h6>
-            </div>
-            <div class=" p-2 mb-3">
-                <img class="card-img-top" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
-            </div>
-            <div class="create_date mx-2">
-                <p><?php echo $post->create_at; ?></p>
+        <div class="d-flex justify-content-left w-100 m-auto border rounded-top ">
+            <img class="rounded-circle mx-2 mt-auto" src="<?php echo $post->profile_img ?>" alt="profile">
+            <h6 class="card-title mx-3 mt-auto"><?php echo $post->username; ?></h6>
+        </div>
+        <div class="row px-3 mt-4 mb-4">
+            <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+                <div class="img-left card-bodya">
+                    <img class="card-img-top " src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
+                </div>
+                <div class="card-body ">
+                    <h4 class="title text-center mt-4">
+                        Comment
+                    </h4>
+                    <hr style="position:relative;">
+                    <div class="d-none d-md-flex">
+                        <div class="mt-1 w-100">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-8 w-100">
+                                    <div class="card p-4 w-100" style="border: none; box-shadow: 5px 6px 6px 2px #e9ecef; border-radius: 4px">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="user d-flex flex-row "> <img src="<?php echo $post->profile_img ?>"  class="user-img rounded-circle " style="width:20px;height:20px;"> <span class="px-2"><p class=" text-primary ml-1"><?php echo $post->username; ?></p> <p class="font-weight-bold mt-1 ">Hmm, This poster looks cool</p></span> </div> <small class="create_date">2 days ago</small>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     <?php endforeach;  ?>
@@ -25,3 +42,4 @@
     </div>
 </div>
 <?php require_once CAMAGRU_ROOT . '/Views/inc/footer.php'; ?>
+    

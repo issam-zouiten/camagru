@@ -1,4 +1,9 @@
-<?php require_once CAMAGRU_ROOT . '/Views/inc/header.php'; ?>
+<?php require_once CAMAGRU_ROOT . '/Views/inc/header.php'; 
+    if (isLogged()){
+        redirect('posts');
+        exit();
+    }
+?>
 
 <div class="col-md-6 mx-auto">
         <div class="card card-body shadow p-3 mb-5 bg-white rounded mt-5 text-center">
@@ -21,7 +26,7 @@
                     <input type="submit" value="Log in" class="btn btn-primary btn-block">
                 </div>
                 <div class="row">
-                    <p>Forgot you password ? <a href="<?php echo URL_ROOT ?>/users/signup" style="text-decoration: none;">reset password</a></p>
+                    <p>Forgot you password ? <a href="<?php echo URL_ROOT ?>/users/forgot" style="text-decoration: none;">reset password</a></p>
                     <p>You don't have an account? <a href="<?php echo URL_ROOT ?>/users/signup" style="text-decoration: none;">sign up</a></p>
                 </div>
             </form>
