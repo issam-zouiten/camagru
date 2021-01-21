@@ -1,4 +1,3 @@
-<header class="blog-header py-3">
   <nav class="navbar navbar-expand-lg ">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
@@ -8,7 +7,7 @@
       </div>
         <?php if (isset($_SESSION['user_id'])) : ?>
           <div class="pr col-4 w-auto h-auto float-right"onclick="menuToggle()">
-            <img class="profile rounded-circlea border border-info" src="<?php echo $_SESSION['user_img'] ?>" alt="profile">
+            <img class="profile rounded-circlea border" src="<?php echo $_SESSION['user_img'] ?>" alt="profile">
           </div>
           <div class="mono">
             <h3><strong><?php echo ucfirst($_SESSION['user_fullname']) ?></strong></h3>
@@ -32,5 +31,4 @@
       }
     </script>
   </nav>
-  </header>
   <hr style="position:relative; top: -30px;">

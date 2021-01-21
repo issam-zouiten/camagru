@@ -1,5 +1,5 @@
 body {
-	background-color: whitesmoke;
+	background-color: rgb(219, 219, 219);
 }
 
 .username {
@@ -8,6 +8,18 @@ body {
 	font-family: Verdana;
 	color: dimgrey;
 }
+hr {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, .1);
+  }
+
+hr {
+	overflow: visible;
+	box-sizing: content-box;
+	height: 0;
+  }
 
 #logo {
 	font-family: Billabong;
@@ -31,6 +43,13 @@ body {
 
 .profile {
 	width: 40px;
+	border-color: #012229!important;
+
+}
+
+.profile:hover{
+	border-color: #0dcaf0!important;
+
 }
 
 .camera {
@@ -251,7 +270,7 @@ i {
 .pr{
 	position: absolute;
 	right: -3vw;
-	top: 6vh;
+	top: 4vh;	
 }
 .mono {
 	position: absolute;
@@ -270,10 +289,7 @@ i {
 .mono.active {
 	visibility: visible;
 	opacity: 1;
-}
-.mono.desactive {
-	visibility: hidden;
-	opacity: 0;
+	
 }
 .mono::before{
 	content: '';
@@ -283,8 +299,7 @@ i {
 	width: 20px;
 	height: 20px;
 	background: #fff;
-	transform: rotate(45deg);
-	
+	transform: rotate(45deg);	
 }
 .mono h3 {
 	width: 100%;
@@ -340,19 +355,12 @@ ul.pagination li a {
     color: black;
     padding: 8px 16px;
     text-decoration: none;
-    border-radius: 5px;
+	border-radius: 5px;
+	height: auto;
 }
 
 ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
-.comment{
-	
-	position: absolute;
-	background-color: black;
-	height: auto;
-	width: auto;
-	right: 8vw;
-}
 
 
 @media screen and (min-width:768px) {
@@ -380,6 +388,23 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	border-radius: 20px !important;
 	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   }
+
+  .card1{
+	background-color: rgb(219, 219, 219);
+	box-shadow: none;
+
+  }
+  .card2 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	border: 1px solid rgba(0, 0, 0, .05);
+	border-radius: .375rem;
+	background-color: #fff;
+	background-clip: border-box;
+  }
   
   .img-left{
 	width: 50%;
@@ -387,6 +412,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
   }
   
   .card-body{
+	width: 50%;
 	padding: 1rem;
   }
   
@@ -394,16 +420,99 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	margin-bottom: 0rem;
 	font-size: 1rem;
   }
+  .pre-scrollable{
+	max-height: 550px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.mt{
+	margin-top: -0.2rem!important;
+}
 
 @media screen and (min-width: 576px) {
-    .title { font-size: 1.25rem; }
+	.title { font-size: 1.25rem; }
+	.pre-scrollable{
+		max-height: 220px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 }
+
 @media screen and (min-width: 768px) {
-    .title { font-size: 1.5rem; }
+	.title { font-size: 1.5rem; }
+	.pre-scrollable{
+		max-height: 350px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 }
+
 @media screen and (min-width: 992px) {
-    .title { font-size: 1.75rem; }
+	.title { font-size: 1.75rem; }
+	.pre-scrollable{
+		max-height: 400px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 }
+
+
 @media screen and (min-width: 1200px) {
-    .title { font-size: 2rem; }
+	.title { font-size: 2rem; }
+	.pre-scrollable{
+		max-height: 450px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 }
+.profile-head {
+    transform: translateY(5rem)
+}
+
+.cover {
+	background-color: #555;
+}
+
+.card-profile-image {
+  position: relative;
+}
+
+.card-profile-image img {
+  position: absolute;
+  left: 50%;
+  max-width: 180px;
+  z-index: 10;
+  transition: all .15s ease;
+  transform: translate(-50%, -30%);
+  border-radius: 0.375rem;
+}
+
+.card-profile-image img:hover {
+  transform: translate(-50%, -33%);
+}
+.mt--7{
+	margin-top: -9rem !important;
+}
+.mt7{
+	margin-top: -3rem !important;
+}
+.mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: all .15s ease;
+  }
+  
+  
+
+.bg-gradient-default {
+	background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+  }
+  .opacity-8 {
+	opacity: .9 !important;
+  }
+.header {
+	position: relative;
+  }

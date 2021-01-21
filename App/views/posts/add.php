@@ -2,7 +2,10 @@
     require_once CAMAGRU_ROOT . '/Views/inc/header.php';
     require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
 ?>
-    <div class="card card-body shadow p-3 mb-2 bg-white  rounded text-center" id="cam">
+    <div class="row">
+
+    </div>
+    <div class="card shadow p-3 mb-2 bg-white  rounded text-center" id="cam">
         <div class="d-flex flex-row h-auto ">
             <div class="camera h-auto bg-light  shadow" id="vi">
                 <video class="w-100 h-100" id="video" autoplay></video>
