@@ -61,7 +61,7 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="Username">
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username">
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -75,13 +75,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Full Name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="fullname" value="Fullname">
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="fullname" >
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Password</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="password" value="Password">
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="password">
                       </div>
                     </div>
                   </div>

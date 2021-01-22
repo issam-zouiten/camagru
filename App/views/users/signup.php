@@ -4,11 +4,13 @@
         exit();
     }
 ?>
-
-    <div class="col-md-6 mx-auto">
-        <div class="card card-body shadow p-3 mb-5 bg-white rounded mt-5 text-center">
-            <h1><a class="blog-header-logo text-dark" href="<?php echo URL_ROOT ?>" style="font-family: Billabong; font-size: 70px; text-decoration:none;">Camagru</a></h1>
-            <p><strong>Sign up to share your wolrd</strong></p>
+<div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="col-lg-10 col-xl-9 card login-card flex-row m-auto mx-auto px-0" style="background-color: #eee;">
+        <div class=" my-auto card-bodya text-center h-100 w-50">
+            <h1><a class="text-dark" href="<?php echo URL_ROOT ?>" style="font-family: Billabong; font-size: 70px; text-decoration:none;">Camagru</a></h1>
+        </div>
+        <div class="card-body">
+            <p class="text-center"><strong>Sign up </strong></p>
             <form action="<?php echo URL_ROOT; ?>/users/signup" method="post">
                 <div class="form-group mb-3 w-75 m-auto">
                     <input type="text" name="fullname" class="form-control form-control-lg 
@@ -38,10 +40,11 @@
                 <div class="row mb-4 w-75 ml-5 w-75 m-auto">
                     <input type="submit" value="Sign up" class="btn btn-primary btn-block">
                 </div>
-                <div class="row">
+                <div class="row text-center">
                     <p>Already have an account? <a href="<?php echo URL_ROOT ?>/users/login" style="text-decoration: none;">Log in</a></p>
                 </div>
             </form>
         </div>
     </div>
+</div>
 <?php require_once CAMAGRU_ROOT . '/Views/inc/footer.php'; ?>

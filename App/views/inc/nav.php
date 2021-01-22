@@ -18,7 +18,7 @@
             </ul>
           </div>
       <?php else : ?>
-      <div class="col-4 d-flex justify-content-end align-items-center">
+      <div class="pr col-4 w-auto h-autofloat-right">
         <a class="btn btn-sm btn-outline-secondary mx-2" href="<?php echo URL_ROOT ?>/users/login">Log in</a>
         <a class="btn btn-sm btn-outline-secondary" href="<?php echo URL_ROOT ?>/users/signup">Sign up</a>
       </div>

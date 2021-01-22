@@ -28,8 +28,8 @@ hr {
 }
 
 .rounded-circle {
-	width: 2.5vw;
-	height: 2.5vw;
+	width: 35px;
+	height: 35px;
 }
 
 .rounded-circlea {
@@ -421,9 +421,10 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	font-size: 1rem;
   }
   .pre-scrollable{
-	max-height: 550px;
-	overflow-y: scroll;
+	max-width: 100%;
+	max-height: 400px;
 	overflow-x: hidden;
+	overflow-y: scroll;
 }
 .mt{
 	margin-top: -0.2rem!important;
@@ -431,36 +432,25 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
 @media screen and (min-width: 576px) {
 	.title { font-size: 1.25rem; }
-	.pre-scrollable{
-		max-height: 220px;
-		overflow-y: scroll;
-		overflow-x: hidden;
-	}
+
 }
 
 @media screen and (min-width: 768px) {
 	.title { font-size: 1.5rem; }
-	.pre-scrollable{
-		max-height: 350px;
-		overflow-y: scroll;
-		overflow-x: hidden;
-	}
+	
 }
 
 @media screen and (min-width: 992px) {
 	.title { font-size: 1.75rem; }
-	.pre-scrollable{
-		max-height: 400px;
-		overflow-y: scroll;
-		overflow-x: hidden;
-	}
+
 }
 
 
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 1200px) {
 	.title { font-size: 2rem; }
 	.pre-scrollable{
-		max-height: 450px;
+		max-width: 100%;
+		max-height: 150px;
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
@@ -516,3 +506,25 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 .header {
 	position: relative;
   }
+.comments2{
+	visibility: hidden;
+	opacity: 0;
+	height: 1px;
+}
+@media screen and (max-width: 768px) {
+	.comments2{
+		visibility: visible;
+		opacity: 1;
+		height: auto;
+	}
+	.comments1{
+		visibility: hidden;
+		display: none;
+		opacity: 0;
+	}
+	.img-left{
+		width: 100%;
+		background-size: cover;
+	  }
+	  
+}
