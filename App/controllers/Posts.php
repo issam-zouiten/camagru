@@ -8,6 +8,7 @@
                 redirect('users/login');
 
             $this->postModel = $this->model('Post');
+            $this->userModel = $this->model('User');
         }
 
         public function index()
@@ -30,6 +31,37 @@
                 'content' => ''
             ];
             $this->view('posts/add', $data);
+        }
+
+        public function saveImage(){
+		if(isset($_POST['imgBase64']) && isset($_POST['emoticon']))
+        {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $upload_dir = "../public/img/";
+            $img = $_POST['imgBase64'];
+            $emo = $_POST['emoticon'];
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $d = base64_decode($img);
+            $file = $upload_dir.mktime().'.png';
+            file_put_contents($file, $d);
+
+            list($srcWidth, $srcHeight) = getimagesize($emo);
+            $src = imagecreatefrompng($emo);
+            $dest = imagecreatefrompng($file);
+            imagecopy($dest, $src, 11,11, 0, 0, $srcWidth, $srcHeight);
+            imagepng($dest, $file, 9);
+            move_uploaded_file($dest, $file);
+
+            $data =[
+                'user_id'  => $_SESSION['user_id'],
+                'path' => $file,
+            ];
+            if($this->postModel->save($data)){
+                
+            }else
+                return false;	  
+                }
         }
 
         public function edit_post($id)
@@ -93,13 +125,21 @@
                     'user_id' => $_POST['c_user_id'],
                     'content' => $_POST['content'],
                 ];
-                print_r($data);
-                // $com = $this->userModel->get_commenter($data['user_id']);
-                // $uid = $this->postModel->getUserByPostId($data['post_id']);
-                // $d = $this->userModel->get_dest($uid->user_id);
-                if($this->postModel->addComment($data))
+                $sender = $this->userModel->gets_user($data['user_id']);
+                $uid = $this->postModel->getUserByPostId($data['post_id']);
+                $dest = $this->userModel->gets_user($uid->user_id);
+                if($this->postModel->addComment($data) && $_SESSION['notification'] == 1)
                 {
-
+                        $to_email = $dest->email;
+                        $subject = "You get a comment";
+                        $body = '<p><h1>Your image gets a comment</h1>
+                            <br /><br />
+                            <br/> 
+                            '.$sender->username.' commented on your image.
+                            </p>';
+                        $headers = "Content-type:text/html;charset=UTF-8" . "\r\n";
+                        $headers .= 'From: <oes-safi@Camagru.ma>' . "\r\n";    
+                        mail($to_email, $subject, $body, $headers);
                 }
             }
         }

@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg ">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
         <a class="blog-header-logo text-dark" id="logo" href="<?php echo URL_ROOT ?>/posts">Camagru</a>
