@@ -1,8 +1,8 @@
 <?php require_once CAMAGRU_ROOT . '/Views/inc/header.php';
-    if (isLogged()){
-        redirect('posts');
-        exit();
-    }
+if (isLogged()) {
+    redirect('posts');
+    exit();
+}
 ?>
 <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="col-lg-10 col-xl-9 card login-card flex-row m-auto mx-auto px-0" style="background-color: #eee;">
@@ -14,8 +14,9 @@
             <form action="<?php echo URL_ROOT; ?>/users/signup" method="post">
                 <div class="form-group mb-3 w-75 m-auto">
                     <input type="text" name="fullname" class="form-control form-control-lg 
-                        <?php echo (!empty($data['err_fullname'])) ? 'is-invalid' : ''; ?>" placeholder="Full Name" value="<?php echo $data['fullname']; ?>">
-                    <span class="invalid-feedback"> <?php echo($data['err_fullname']); ?></span>
+                        <?php echo (!empty($data['err_fullname'])) ? 'is-invalid' : ''; ?>" placeholder="Full Name" value="<?= $data['fullname']; ?>">
+                    <span class="invalid-feedback">
+                        <? if(!empty($data['err_fullname'])){echo ($data['err_fullname']);}?></span>
                 </div>
                 <div class="form-group mb-3 w-75 m-auto">
                     <input type="email" name="email" class="form-control form-control-lg 

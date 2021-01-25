@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : sam. 23 jan. 2021 à 13:24
+-- Généré le : sam. 23 jan. 2021 à 15:24
 -- Version du serveur :  8.0.23
 -- Version de PHP : 7.4.13
 
@@ -83,7 +83,7 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 CREATE TABLE `posts` (
   `id` int NOT NULL,
   `user_id` int NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Title',
   `content` varchar(255) NOT NULL,
   `create_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `comments` int NOT NULL DEFAULT '0',
@@ -99,7 +99,8 @@ INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `create_at`, `comments
 (6, 17, 'hello', 'https://images.pexels.com/photos/5969456/pexels-photo-5969456.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:30:05', 0, 0, 1),
 (7, 17, 'hello', 'https://images.pexels.com/photos/2974623/pexels-photo-2974623.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:30:40', 0, 0, 0),
 (10, 17, 'old', 'https://images.pexels.com/photos/5231279/pexels-photo-5231279.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:36:46', 0, 0, 0),
-(11, 17, 'old', 'https://images.pexels.com/photos/4153800/pexels-photo-4153800.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:37:31', 0, 0, 0);
+(11, 17, 'old', 'https://images.pexels.com/photos/4153800/pexels-photo-4153800.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:37:31', 0, 0, 0),
+(27, 17, 'Title', '../public/img/1611412810.png', '2021-01-23 14:40:10', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `users`

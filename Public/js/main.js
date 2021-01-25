@@ -28,6 +28,7 @@ if (window.location.href == server_name + "/posts/add")
 
     document.getElementById('clear').addEventListener("click", function(){
     context.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById('save').disabled = true;
     });
 
     fillter1 = document.getElementById('fillter1'),
@@ -76,6 +77,8 @@ if (window.location.href == server_name + "/posts/add")
             }
             if(file && isImage(file))
             img.src = URL.createObjectURL(file);
+            if (uploadImg.files.lenght != 0)
+                document.getElementById('save').disabled = false;
         });
     }
 
@@ -108,6 +111,11 @@ function saveImage()
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
     setInterval(function(){ window.location.reload(); }, 50);
+}
+
+function enable(){
+    var ab = document.getElementById("save");
+    ab.disabled= false;
 }
 
 function like(event)

@@ -45,7 +45,7 @@
             $row = $this->db->singleFetch();
 
 
-        if ($this->db->rowCount() > 0)
+        if ($this->db->rowCount() > 0 && $row->verified == 0)
         {
             $this->db->query('UPDATE users SET verified = 1 WHERE token = :token');
             $this->db->bind(':token', $token);

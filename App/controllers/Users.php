@@ -245,6 +245,9 @@
                 {
                     pop_up('signup_ok', 'Your account is verified succesfully');
                     redirect('users/login');
+                }else{
+                    pop_up('signup_ok','verificatikon failed', 'alert alert-danger');
+                    redirect('users/login');
                 }
             }
             else

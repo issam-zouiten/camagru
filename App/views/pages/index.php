@@ -6,13 +6,13 @@
 
     <?php foreach($data['posts'] as $post) : ?>
         <div class="col-lg-10 col-xl-9 card card1 d-flex flex-row mx-auto px-0">
-            <img class="rounded-circle mx-2 mt-auto" src="<?php echo $post->profile_img ?>" alt="profile">
-            <h6 class="card-title mx-3 mt-auto"><?php echo $post->username; ?></h6>
+            <img class="rounded-circle mx-2 mt-auto" src="<?= $post->profile_img ?>" alt="profile">
+            <h6 class="card-title mx-3 mt-auto"><?= $post->username; ?></h6>
         </div>
         <div class="row px-3 mt-4 mb-4">
         <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0" style="background-color: #ededed;">
             <div class="img-left card-bodya">
-                    <img class="card-img-top" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
+                    <img class="card-img-top" src="<?= $post->content; ?>" alt="<?= $post->title; ?>">
                 </div>
                 <div class="card-body h-100 comments1">
                     <h4 class="title text-center mt-4" style="height: 5%;">
