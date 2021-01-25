@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : sam. 23 jan. 2021 à 15:24
+-- Généré le : lun. 25 jan. 2021 à 17:49
 -- Version du serveur :  8.0.23
 -- Version de PHP : 7.4.13
 
@@ -48,7 +48,30 @@ INSERT INTO `comments` (`id`, `user_id`, `post_id`, `content`) VALUES
 (25, 17, 10, 'wqwq'),
 (26, 17, 10, 'wqq'),
 (27, 17, 11, 'ses'),
-(28, 17, 11, 'dsl');
+(28, 17, 11, 'dsl'),
+(29, 17, 27, 'cdscdsc'),
+(30, 17, 10, 'cdsdcds'),
+(31, 17, 10, 'dscds'),
+(32, 17, 10, 'cdscds'),
+(33, 17, 10, 'scsdcs'),
+(34, 17, 10, 'dscdsc'),
+(35, 21, 30, 'dsf'),
+(36, 21, 30, 'dsf'),
+(37, 21, 30, 'dsfds'),
+(38, 21, 30, 'dsf'),
+(39, 21, 30, 'dsfdsf'),
+(40, 21, 30, 'dsfadsfds'),
+(41, 17, 37, 'fvdfdfv'),
+(42, 17, 37, 'cdzcdscds'),
+(43, 17, 37, 'cdzcdscds'),
+(44, 17, 37, 'cdzcdscds'),
+(45, 17, 37, 'cdzcdscdscsc'),
+(46, 17, 37, 'cdzcdscdscsc'),
+(47, 17, 37, 'cdzcdscdscsc'),
+(48, 17, 37, 'cdzcdscdscsc'),
+(49, 17, 37, 'cdzcdscdscsc'),
+(50, 17, 37, 'cdzcdscdscsc'),
+(51, 17, 37, 'cxz ');
 
 -- --------------------------------------------------------
 
@@ -72,7 +95,8 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (127, 17, 2),
 (128, 17, 1),
 (130, 17, 3),
-(134, 17, 6);
+(134, 17, 6),
+(152, 17, 29);
 
 -- --------------------------------------------------------
 
@@ -100,7 +124,9 @@ INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `create_at`, `comments
 (7, 17, 'hello', 'https://images.pexels.com/photos/2974623/pexels-photo-2974623.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:30:40', 0, 0, 0),
 (10, 17, 'old', 'https://images.pexels.com/photos/5231279/pexels-photo-5231279.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:36:46', 0, 0, 0),
 (11, 17, 'old', 'https://images.pexels.com/photos/4153800/pexels-photo-4153800.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', '2021-01-23 00:37:31', 0, 0, 0),
-(27, 17, 'Title', '../public/img/1611412810.png', '2021-01-23 14:40:10', 0, 0, 0);
+(29, 17, 'Title', '../public/img/1611585285.png', '2021-01-25 14:34:46', 0, 0, 1),
+(30, 17, 'Title', '../public/img/1611587755.png', '2021-01-25 15:15:55', 0, 0, 0),
+(37, 21, 'Title', '../public/img/1611593539.png', '2021-01-25 16:52:19', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -117,18 +143,22 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `verified` int NOT NULL DEFAULT '0'
+  `verified` int NOT NULL DEFAULT '0',
+  `notification` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `fullname`, `email`, `username`, `profile_img`, `password`, `token`, `create_date`, `verified`) VALUES
-(3, 'test1', 'test@gmail.com', 'test1', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$pW0B/Xrgz2iIyeDXO84A5eByIkEBSbkWlMVk0Fk6PkRiDJxbhRA3e', '6b889e0b32e63cca347395bdb4321ede', '2021-01-02 02:34:34', 0),
-(16, 'jef', 'izweansh@effobe.com', 'jef1', 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', '$2y$10$ZJHSTqBgNELj.alKEbKnr.J3T2RJ2T8/qQnSxP3oav6e8/2.6pBaK', 'd2bec12ee3396b65852f66a6022ee691', '2021-01-03 03:33:13', 1),
-(17, 'sisok mi7fada', 'petexa9190@majorsww.com', 'sisok1', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$NtSN1D1en0395lmjFbULyut7LBMWUfpDm0rjaOozePn.WHU7TJQFi', '7f65ea8750e2b380dab4e662898b0ee7', '2021-01-17 14:19:06', 1),
-(18, 'issam', 'pineli2698@febula.com', 'Zouiten', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$9qBQUVXl5o/xx.O5qnwKmex5ATrgoJRweadTJ44oM4M3UCezwM15q', '521d4f75e9824b8c3827e891721899f4', '2021-01-21 01:27:25', 1);
+INSERT INTO `users` (`id`, `fullname`, `email`, `username`, `profile_img`, `password`, `token`, `create_date`, `verified`, `notification`) VALUES
+(3, 'test1', 'test@gmail.com', 'test1', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$pW0B/Xrgz2iIyeDXO84A5eByIkEBSbkWlMVk0Fk6PkRiDJxbhRA3e', '6b889e0b32e63cca347395bdb4321ede', '2021-01-02 02:34:34', 0, 1),
+(16, 'jef', 'izweansh@effobe.com', 'jef1', 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', '$2y$10$ZJHSTqBgNELj.alKEbKnr.J3T2RJ2T8/qQnSxP3oav6e8/2.6pBaK', 'd2bec12ee3396b65852f66a6022ee691', '2021-01-03 03:33:13', 1, 1),
+(17, 'sisok mi7fada', 'petexa9190@majorsww.com', 'sisok1', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$NtSN1D1en0395lmjFbULyut7LBMWUfpDm0rjaOozePn.WHU7TJQFi', '7f65ea8750e2b380dab4e662898b0ee7', '2021-01-17 14:19:06', 1, 1),
+(18, 'issam', 'pineli2698@febula.com', 'Zouiten', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$9qBQUVXl5o/xx.O5qnwKmex5ATrgoJRweadTJ44oM4M3UCezwM15q', '521d4f75e9824b8c3827e891721899f4', '2021-01-21 01:27:25', 1, 1),
+(19, 'alert(&#34;Hello! I am an alert box!!&#34;)', 'mouras@ho.com', 'dsa', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$s7TAxg7s51/E0V/Q/xV.JOFXFSPeY.r2TfGIL1luf59rievvOUbUK', 'ed77d92a9a225461ecef62243641bea9', '2021-01-25 16:15:05', 0, 1),
+(20, '<script>alert(\"Hello! I am an alert box!!\")<script>', 'isaam@gmail.com', 'l', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$1sOynLQhdTOfktoHFh9Rl.7u.7YK.C55NpCrA68L5Cy4ny5ODpfwm', 'f69eb13860914d55024e84d84f9b6c23', '2021-01-25 16:17:53', 0, 1),
+(21, 'mouras', 'f2051ce2a2@firemailbox.club', 'mouras', 'https://www.washingtonfirechiefs.com/Portals/20/EasyDNNnews/3584/img-blank-profile-picture-973460_1280.png', '$2y$10$YS7JDYfs1w1cESTCYe8G5exLOSwnzeUuFFc53KmkcNAMQgs35/j/a', '20d5da9f66c51f3e3252d41efea34cad', '2021-01-25 16:19:36', 1, 1);
 
 --
 -- Index pour les tables déchargées
@@ -166,25 +196,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT pour la table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
