@@ -18,7 +18,7 @@ if (!isset($_SESSION['userid'])) :
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="<?php echo URL_ROOT ?>/users/profile">
-                    <img src="<?php echo $_SESSION['user_img'] ?>" class="rrounded-circlez" alt="profile">
+                    <img src="<?php echo $_SESSION['user_img'] ?>" class="rounded-circlez" alt="profile">
                   </a>
                 </div>
               </div>
@@ -31,9 +31,9 @@ if (!isset($_SESSION['userid'])) :
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5"></div>
                 </div>
               </div>
-              <div class="text-center pt-4 ">
+              <div class="text-center pt-4 text-white">
                 <h3><?php echo ucfirst($_SESSION['user_fullname']) ?></h3>
-                <div class="h5 font-weight-300">
+                <div class="h5 font-weight-300 ">
                   <p class="small mb-4"><?php echo $_SESSION['user_username'] ?></p>
                 </div>
                 <hr class="my-4">
@@ -48,8 +48,9 @@ if (!isset($_SESSION['userid'])) :
                 <div class="col-8">
                   <h3 class="mb-0">My account</h3>
                 </div>
-                <div class="col-4 text-right">
-                  <input class="btn btn-outline-dark btn-sm btn-block" id="edit_profile" onclick="editShow()" value="Edit profile">
+                <div class="col-4 text-right ">
+                  <input class="btn btn-outline-dark btn-sm" id="edit_profile" onclick="editShow()" value="Edit profile" >
+                  <input type="button" class="cancel-btn btn btn-outline-danger h-auto shadow" id="cancel" value="cancel" onclick="editHide()"></button>
                 </div>
               </div>
             </div>
@@ -95,7 +96,6 @@ if (!isset($_SESSION['userid'])) :
                 <div class="pl-lg-4">
                   <div class="d-flex my-3 w-100 h-auto mx-auto">
                     <input type="submit" class="update-btn btn btn-outline-success h-auto mx-2 shadow" value="update">
-                    <input type="button" class="cancel-btn btn btn-outline-danger h-auto shadow" value="cancel" onclick="editHide()"></button>
                   </div>
                 </div>
               </form>
@@ -108,11 +108,11 @@ if (!isset($_SESSION['userid'])) :
       <div class="gallery-container row mr-5 gal">
         <?php foreach ($data['posts'] as $post) :
           if ($post->userId == $_SESSION['user_id']) : ?>
-            <div class="gallery rounded mb-3 h-auto">
+            <div class="gallery rounded  h-auto">
               <div class="p-2 mb-3 w-auto h-100">
-                <img class="card-img-top rounded w-100 mb-3 shadow" style="height: 20rem; object-fit:cover;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
+                <img class="card-img-top rounded w-100 mb-3 shadow gallery-img" style="height: 20rem; object-fit:cover;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
                 <div class="w-100 h-auto">
-                  <a href="<?php echo URL_ROOT; ?>/posts/del_post/<?php echo $post->postId ?>"><i class="fa fa-trash shadow h-auto" value="Delete" name="delete" style="font-size: 25px; color:rgb(255, 79, 79)"></i></a>
+                  <a href="<?php echo URL_ROOT; ?>/posts/del_post/<?php echo $post->postId ?>"><i class="fa fa-trash shadow h-auto" value="Delete" name="delete" style="font-size: 25px; color:#be9e98"></i></a>
                 </div>
               </div>
             </div>

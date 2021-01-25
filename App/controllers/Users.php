@@ -301,7 +301,7 @@
         }
         
         public function profile() {
-            $post = $this->postModel->getPosts();
+            $post = $this->postModel->getPostsprofil();
             $data = [
                 'username' => $_SESSION['username'],
                 'posts' =>$post

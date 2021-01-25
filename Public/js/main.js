@@ -87,11 +87,14 @@ if (window.location.href == server_name + "/posts/add")
 function editShow() {
     document.getElementById('edit_div').style.display = "block";
     document.getElementById('edit_profile').style.display = "none";
+    document.getElementById('cancel').style.display = "block";
+
 }
 
 function editHide() {
     document.getElementById('edit_div').style.display = "none";
     document.getElementById('edit_profile').style.display = "block";
+    document.getElementById('cancel').style.display = "none";
 }
 
 function menuToggle(){

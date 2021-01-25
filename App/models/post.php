@@ -9,9 +9,16 @@
             $this->db = new Db;
         }
 
-        public function getPosts()
+        public function getPosts($depart, $postsPerPage)
         {
-            $this->db->query('SELECT *, posts.id as postId, users.id as userId FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.create_at DESC');
+            $this->db->query("SELECT *, posts.id as postId, users.id as userId FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.create_at DESC LIMIT $depart,$postsPerPage");
+            $res = $this->db->resultSet();
+
+            return $res;
+        }
+        public function getPostsprofil()
+        {
+            $this->db->query("SELECT *, posts.id as postId, users.id as userId FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.create_at DESC");
             $res = $this->db->resultSet();
 
             return $res;
@@ -28,6 +35,17 @@
                 return false;
             }
         }
+
+        public function count_posts(){
+            $this->db->query('SELECT count(*) FROM posts');
+    
+            $c = $this->db->ftchColumn();
+            if($c)
+                return $c;
+            else
+                return false;
+        }
+        
         public function del($id)
         {
             $this->db->query('DELETE FROM posts WHERE id = :id');

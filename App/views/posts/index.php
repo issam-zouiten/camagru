@@ -14,9 +14,9 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                 <img class="post-imgs shadow card-img-top" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
             </div>
             <div class="card-body comments1">
-                <h4 class="title text-center mt-4" style="height: 5%;">
+                <h4 class="title text-center" >
                     Comments
-                    <hr style="position:relative;" class="mt-3">
+                <hr style="position:relative;" class="mt-3">
                 </h4>
                 <div class="comm">
                     <div class="pre-scrollable">
@@ -55,48 +55,6 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                 </div>
             </div>
         </div>
-        <!-- <div class="col-lg-10 col-xl-9 card flex-row mx-auto my-2 px-0 comments2">
-                <div class="card-body ">
-                    <h4 class="title text-center mt-4">
-                        Comments
-                    </h4>
-                    <hr style="position:relative;">
-                    <div class="pre-scrollable">
-                        <div class="mt-1 w-75">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-md-8 w-100 " >
-                                    <?php
-                                    if (is_array($data['comments'])) {
-                                        foreach ($data['comments'] as $comment) {
-                                            if ($comment->post_id == $post->postId) {
-                                    ?>
-                                                    <div class="card w-75 mt-1" style="border: none;border-radius: 5px; width: 80%">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="user d-flex flex-row px-2"> <span class="px-3 mx-2" style="height: 15%;"><p class="text-primary"><?php echo $comment->username; ?></p></span></div>
-                                                    </div>  
-                                                    <span class="px-4"><p><?php echo htmlspecialchars($comment->content); ?></p></span>
-                                                    </div>
-                                                    <?php
-                                                }
-                                            }
-                                        }
-                                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="">
-                          <div class="input-group">
-                            <input type="text" class="comment-input form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" name="comment_<?php echo $post->postId; ?>" placeholder="write a comment...">
-                            <div class="input-group-append">
-                              <button onclick="comment(event)"
-                            data-c-user_id="<?php echo $_SESSION['user_id']; ?>"
-                            data-c-post_id="<?php echo $post->postId; ?>"class="post-btn btn btn-outline-primary" type="button">Post</button>
-                            </div>
-                          </div>
-                      </div>
-                </div>
-            </div> -->
         <div class="col-lg-10 col-xl-9 card card1 d-flex flex-row mx-auto px-4 m-3">
             <?php
             $liked = false;
@@ -114,20 +72,35 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
             <?php }
             ?>
             <strong>
-                <p id="li_nb_<?php echo $post->postId; ?>" class="my-1 mx-1"><?php echo $post->like_nbr; ?> </p>
+                <p id="li_nb_<?php echo $post->postId; ?>" class="my-1 mx-1 text-white"><?php echo $post->like_nbr; ?> </p>
             </strong>
             <strong>
-                <p class="my-1 ">Likes</p>
+                <p class="my-1 text-white">Likes</p>
             </strong>
         </div>
     </div>
 <?php endforeach;  ?>
 <div class="text-center">
-    <ul class="pagination pagination-lg">
-        <?php for ($i = 0; $i < $data['countpg']; $i++) {
-            echo '<li class="active"><a href="' . URL_ROOT . '/posts?start=' . $i . '">' . $i . '</a> </li>';
-        } ?>
-    </ul>
+  <ul class="pagination ">
+    <?php 
+    if(($data['currentPage']-1) > 0)
+        echo '<li class="active"><a class="page-link" href="' . URL_ROOT . '/posts?page='.($data['currentPage']-1).'"><</a></li>';
+    else
+        echo '<li class="active"><a class="page-link"><</a></li>';
+
+    for($i = 1; $i <= $data['totalPages']; $i++){
+        if($i == $data['currentPage'])
+            echo '<li class="active"><a class="page-link">'.$i.'</a></li>';
+        else
+            echo '<li class="active"><a class="page-link" href="' . URL_ROOT . '/posts?page='.$i.'">'.$i.'</a></li>';
+    }
+    if(($data['currentPage']+1) <= $data['totalPages'])
+        echo '<li class="active"><a class="page-link" href="' . URL_ROOT . '/posts?page='.($data['currentPage']+1).'">></a></li>';
+    else
+        echo '<li class="active""><a class="page-link">></a></li>';
+
+    ?>
+  </ul>
 </div>
 </div>
 <?php require_once CAMAGRU_ROOT . '/Views/inc/footer.php'; ?>
