@@ -359,7 +359,7 @@ ul.pagination {
     margin: 0;
 }
 
-ul.pagination li {display: inline;width: 3rem; margin: 2px;text-align: center;}
+ul.pagination li {display: inline; width: 3rem; margin: 2px;text-align: center;}
 
 ul.pagination li a {
     color: black;

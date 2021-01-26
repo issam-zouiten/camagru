@@ -155,5 +155,19 @@
                 return ($result);
             else
                 return false;
-        } 
+        }
+
+        public function update_notifs($id, $status)
+        {
+            if ($status == 1)
+                $this->db->query('UPDATE users SET notification = 1 WHERE id = :id');
+            else
+                $this->db->query('UPDATE users SET notification = 0 WHERE id = :id');
+            $this->db->bind(':id', $id);
+
+            if ($this->db->execute())
+                return true;
+            else
+                return false;
+        }
     }

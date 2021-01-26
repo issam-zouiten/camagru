@@ -49,7 +49,7 @@ if (!isset($_SESSION['userid'])) :
                   <h3 class="mb-0">My account</h3>
                 </div>
                 <div class="col-4 text-right ">
-                  <input class="btn btn-outline-dark btn-sm" id="edit_profile" onclick="editShow()" value="Edit profile" >
+                  <input class="btn btn-outline-dark btn-sm" id="edit_profile" onclick="editShow()" value="Edit profile">
                   <input type="button" class="cancel-btn btn btn-outline-danger h-auto shadow" id="cancel" value="cancel" onclick="editHide()"></button>
                 </div>
               </div>
@@ -62,13 +62,13 @@ if (!isset($_SESSION['userid'])) :
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username">
+                        <input type="text" id="input-username" name="new_username" class="form-control form-control-alternative" placeholder="new username">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Exempl@example.com">
+                        <input type="email" id="input-email" name="new_email" class="form-control form-control-alternative" placeholder="Exempl@example.com">
                       </div>
                     </div>
                   </div>
@@ -76,13 +76,13 @@ if (!isset($_SESSION['userid'])) :
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Full Name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="fullname">
+                        <input type="text" id="input-last-name" name="new_fullname" class="form-control form-control-alternative" placeholder="new fullname">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Password</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="password">
+                        <input type="text" id="input-last-name" name="new_password" class="form-control form-control-alternative" placeholder="new password">
                       </div>
                     </div>
                   </div>
@@ -91,7 +91,7 @@ if (!isset($_SESSION['userid'])) :
                 <!-- Address -->
                 <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox"> Recieve email notifications
+                  <input class="form-check-input" name="notifs" type="checkbox" <?php if ($_SESSION['notification']) echo 'checked'; ?>> Recieve email notifications
                 </div>
                 <div class="pl-lg-4">
                   <div class="d-flex my-3 w-100 h-auto mx-auto">

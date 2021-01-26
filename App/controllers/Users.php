@@ -213,7 +213,7 @@
                                 <br />This is an automatic mail , please do not reply.
                             </p>';
                         $headers = "Content-type:text/html;charset=UTF-8" . "\r\n";
-                        $headers .= 'From: <oes-safi@Camagru.ma>' . "\r\n";    
+                        $headers .= 'From: <izouiten@Camagru.ma>' . "\r\n";    
                         if (mail($to_email, $subject, $body, $headers))
                             pop_up('signup_ok', 'Reset password verification sent to your email');
                         else
@@ -311,7 +311,6 @@
         }
 
         public function update_user() {
-            
             $data = [
                 'id' => $_SESSION['user_id'],
             ];
@@ -362,6 +361,20 @@
             }
             else
                 redirect('users/profile');
+
+            if (!empty($_POST['notifs'])) {
+                if ($this->userModel->update_notifs($data['id'], 1)) {
+                    pop_up('updated', 'notification updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
+                    $_SESSION['notification'] = 1;
+                    redirect('users/profile');;
+                }
+            } else {
+                if ($this->userModel->update_notifs($data['id'], 0)) {
+                    pop_up('updated', 'Notification updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
+                    $_SESSION['notification'] = 0;
+                    redirect('users/profile');;
+                }
+            }
 
         }
     }

@@ -36,7 +36,7 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
         <input type="file" class="column form-control shadow w-auto h-auto mx-1" value="Upload photo" id="upload" accept="image/jpg, image/jpeg, image/png">
     </div>
 </div>
-<div class="card card-body shadow p-3 bg-white  rounded text-center" id="thum">
+<!-- <div class="card card-body shadow p-3 bg-white  rounded text-center" id="thum"> -->
 </div>
 
 <?php require_once CAMAGRU_ROOT . '/Views/inc/footer.php'; ?>
