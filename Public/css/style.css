@@ -61,17 +61,15 @@ hr {
 }
 
 .image {
-	width: 50%;
+	width: 40%;
+	height: 30vh;
 }
 
 .buttons {
 	width: 60%;
 	height: auto;
 }
-.filters {
-	width: 100px;
-	height: auto;
-}
+
 
 label {
 	display: block;
@@ -121,7 +119,11 @@ label {
 }
 
 .filter {
-	width: 60%;
+	margin-left: 10vw!important;
+	width: 6%;
+	position: absolute;
+
+
 }
 
 .information {
@@ -151,14 +153,15 @@ i {
 }
 
 .column {
+	background-color: #ecf3f7;
 	float: left;
-	width: 23%;
+	width: 4rem;
 	height: auto;
 }
 
 .filter_img {
-	width: 70%;
-	height: 10%;
+	width: 4rem;
+	height: 4rem;
 }
 
 .edit-btn {

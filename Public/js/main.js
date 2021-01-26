@@ -12,7 +12,7 @@ if (window.location.href == server_name + "/posts/add")
     function streamWebCam (stream) {
         video.srcObject = stream;
         video.play();
-        width = stream.getTracks()[0].getSettings().width;
+        width = stream.getTracks()[0].getSettings().width ;
         height = stream.getTracks()[0].getSettings().height;
         canvas.width = width;
         canvas.height = height;
@@ -22,7 +22,7 @@ if (window.location.href == server_name + "/posts/add")
     }
         
     document.getElementById('take').addEventListener("click", function(){
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        context.drawImage(video, 0, 0, canvas.width, canvas.height );
         context.drawImage(elem, 10, 10, 140, 140);
     });
 
@@ -37,8 +37,8 @@ if (window.location.href == server_name + "/posts/add")
     fillter4 = document.getElementById('fillter4');
 
     var elem = document.createElement('img');
-    elem.setAttribute("height", "180");
-    elem.setAttribute("width", "180");
+    elem.setAttribute("height", "100");
+    elem.setAttribute("width", "100");
     elem.setAttribute("id", "filters");
 
     function choose_filter()
