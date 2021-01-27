@@ -91,7 +91,7 @@ if (!isset($_SESSION['userid'])) :
                 <!-- Address -->
                 <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="form-check">
-                  <input class="form-check-input" name="notifs" type="checkbox" <?php if ($_SESSION['notification']) echo 'checked'; ?>> Recieve email notifications
+                  <input class="form-check-input" name="notifs" type="checkbox" <?php if ($_SESSION['notification']) echo 'checked'; ?>> Notifications in your email
                 </div>
                 <div class="pl-lg-4">
                   <div class="d-flex my-3 w-100 h-auto mx-auto">

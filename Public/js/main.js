@@ -27,8 +27,9 @@ if (window.location.href == server_name + "/posts/add")
     });
 
     document.getElementById('clear').addEventListener("click", function(){
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById('save').disabled = true;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById('save').disabled = true;
+        uploadImg.value = "";
     });
 
     fillter1 = document.getElementById('fillter1'),
@@ -79,6 +80,8 @@ if (window.location.href == server_name + "/posts/add")
             img.src = URL.createObjectURL(file);
             if (uploadImg.files.lenght != 0)
                 document.getElementById('save').disabled = false;
+            if (isCanvasEmpty(canvas))
+                document.getElementById('save').disabled = false;
         });
     }
 
@@ -114,6 +117,15 @@ function saveImage()
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
     setInterval(function(){ window.location.reload(); }, 50);
+}
+
+function isCanvasEmpty(canvas) {
+    const blank = document.createElement('canvas');
+
+    blank.width = canvas.width;
+    blank.height = canvas.height;
+
+    return canvas.toDataURL() === blank.toDataURL();
 }
 
 function enable(){

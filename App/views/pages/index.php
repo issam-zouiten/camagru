@@ -14,9 +14,9 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                 <img class="post-imgs shadow card-img-top" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
             </div>
             <div class="card-body comments1">
-                <h4 class="title text-center" >
+                <h4 class="title text-center">
                     Comments
-                <hr style="position:relative;" class="mt-3">
+                    <hr style="position:relative;" class="mt-3">
                 </h4>
                 <div class="comm">
                     <div class="pre-scrollable">
@@ -50,41 +50,36 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                 </div>
                 <div class="cardbox-comments mt-2 mt-4 input-group">
                     <input type="text" name="comment_<?php echo $post->postId; ?>" class="form-control w-50" placeholder="write a comment..." rows="1" style="resize:none; border:none"></textarea>
-                    <i class="fa fa-paper-plane pt-1" data-c-user_id="<?php echo $_SESSION['user_id']; ?>" data-c-post_id="<?php echo $post->postId; ?>" onclick="comment(event)" style="font-size:27px;background-color: white;color:blue; ">
-                    </i>
-                </div>
+                    <i class="fa fa-paper-plane pt-1" data-c-user_id="<?php if (!empty($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" data-c-post_id="<?php echo $post->postId; ?>" onclick="comment(event)" style="font-size:27px;background-color: white;color:blue; ">
+                </i>
             </div>
         </div>
-        <div class="col-lg-10 col-xl-9 card card1 d-flex flex-row mx-auto px-4 m-3">
-            <?php
-            $liked = false;
-            foreach ($data['likes'] as $like) {
-                if ($like->user_id == $_SESSION['user_id'] && $like->post_id == $post->postId) {
-                    $liked = true; ?>
-                    <i class="fa fa-heart" data-post_id="<?php echo $post->postId; ?>" data-user_id="<?php echo $_SESSION['user_id']; ?>" data-like_nbr="<?php echo $post->like_nbr; ?>" onclick="like(event)" id="l_<?php echo $post->postId; ?>" name="li_<?php echo $post->postId; ?>" style="margin-right: 1rem!important;font-size:36px;color:rgb(223, 121, 172)">
-                    </i>
-                <?php
-                }
-            }
-            if ($liked === false) { ?>
-                <i class="fa fa-heart-o" data-post_id="<?php echo $post->postId; ?>" data-like_nbr="<?php echo $post->like_nbr; ?>" data-user_id="<?php echo $_SESSION['user_id']; ?>" onclick="like(event)" id="l_<?php echo $post->postId; ?>" name="li_<?php echo $post->postId; ?>" style="margin-right: 1rem!important;font-size:36px;color:rgb(223, 121, 172)">
-                </i>
-            <?php }
-            ?>
-            <strong>
-                <p id="li_nb_<?php echo $post->postId; ?>" class="my-1 mx-1"><?php echo $post->like_nbr; ?> </p>
-            </strong>
-            <strong>
-                <p class="my-1 ">Likes</p>
-            </strong>
-        </div>
+    </div>
+    <div class="col-lg-10 col-xl-9 card card1 d-flex flex-row mx-auto px-4 m-3">
+        <i class="fa fa-heart-o" data-post_id="<?php echo $post->postId; ?>" data-like_nbr="<?php echo $post->like_nbr; ?>" data-user_id="<?php if (!empty($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" onclick="like(event)" id="l_<?php echo $post->postId; ?>" name="li_<?php echo $post->postId; ?>" style="margin-right: 1rem!important;font-size:36px;color:rgb(223, 121, 172)"></i>
+    </div>
     </div>
 <?php endforeach;  ?>
 <div class="text-center">
-    <ul class="pagination pagination-lg">
-        <?php for ($i = 0; $i < $data['countpg']; $i++) {
-            echo '<li class="active"><a href="' . URL_ROOT . '/posts?start=' . $i . '">' . $i . '</a> </li>';
-        } ?>
+    <ul class="pagination ">
+        <?php
+        if (($data['currentPage'] - 1) > 0)
+            echo '<li class="active"><a class="page-link" href="' . URL_ROOT . '/pages?page=' . ($data['currentPage'] - 1) . '"><</a></li>';
+        else
+            echo '<li class="active"><a class="page-link"><</a></li>';
+
+        for ($i = 1; $i <= $data['totalPages']; $i++) {
+            if ($i == $data['currentPage'])
+                echo '<li class="active"><a class="page-link">' . $i . '</a></li>';
+            else
+                echo '<li class="active"><a class="page-link" href="' . URL_ROOT . '/pages?page=' . $i . '">' . $i . '</a></li>';
+        }
+        if (($data['currentPage'] + 1) <= $data['totalPages'])
+            echo '<li class="active"><a class="page-link" href="' . URL_ROOT . '/pages?page=' . ($data['currentPage'] + 1) . '">></a></li>';
+        else
+            echo '<li class="active""><a class="page-link">></a></li>';
+
+        ?>
     </ul>
 </div>
 </div>

@@ -78,7 +78,7 @@
                                 <br />This is an automatic mail , please do not reply.
                             </p>';
                         $headers = "Content-type:text/html;charset=UTF-8" . "\r\n";
-                        $headers .= 'From: <oes-safi@Camagru.ma>' . "\r\n";    
+                        $headers .= 'From: <izouiten@Camagru.ma>' . "\r\n";    
                         if (mail($to_email, $subject, $body, $headers))
                                 pop_up('signup_ok', 'You are now part of our community, Verify your email to login');
                             else
@@ -221,6 +221,8 @@
                 }
                 $this->view('users/forgot', $data); 
             }
+            else 
+                die('error');
         }
 
         public function createUserSession($user)
@@ -267,6 +269,8 @@
                 {
                     $this->view('users/reset', $data);
                 }
+                else 
+                die('error !!');
             }
             else
                 die('error');
@@ -298,6 +302,8 @@
                 }
                 $this->view('users/reset', $data); 
             }
+            else 
+                die("errro !!!");
         }
         
         public function profile() {

@@ -377,6 +377,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	
 	.card-bodya{
 		width:30%;
+		height: 100%;
 	}
 	.pr{
 		position: absolute;
@@ -439,7 +440,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
   .pre-scrollable{
 	scrollbar-color: rgb(0, 0, 0) #ecf3f7;
 	max-width: 100%;
-	max-height: 400px;
+	max-height: 100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -447,7 +448,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	margin-top: -0.2rem!important;
 }
 .resp{
-	background-color: #ecf3f7; height: 70vh!important;
+	background-color: #ecf3f7; 
 }
 
 @media screen and (max-width: 1200px) {
@@ -455,7 +456,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	.pre-scrollable{
 		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
 		max-width: 100%;
-		max-height: 350px;
+		max-height: 100%;
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
@@ -463,7 +464,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 		height: 67%!important;
 	}
 	.resp{
-		background-color: #ecf3f7; height: 55vh!important;
+		background-color: #ecf3f7; 
 	}
 	.gal{
 	margin-right: auto!important;
@@ -476,22 +477,22 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	.pre-scrollable{
 		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
 		max-width: 100%;
-		max-height: 280px;
+		max-height: 100%;
 		overflow-y: scroll;
 		overflow-x: visible;
 	}
 	.comm{
-		height: 61%!important;
+		height: 50%!important;
 	}
 	.resp{
-		background-color: #ecf3f7; height: 50vh!important;
+		background-color: #ecf3f7; 
 	}
 }
 
 @media screen and (max-width: 768px) {
 	.title { font-size: 1.75rem; }
 	.resp{
-		background-color: #ecf3f7; height: 75vh!important;
+		background-color: #ecf3f7; 
 	}
 }
 
@@ -504,7 +505,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	.pre-scrollable{
 		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
 		max-width: 100%;
-		max-height: 350px;
+		max-height: 100%;
 		overflow-y: scroll;
 		overflow-x: visible;
 	}
@@ -512,7 +513,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 		height: 67%!important;
 	}
 	.resp{
-		background-color: #ecf3f7; height: 60vh!important;
+		background-color: #ecf3f7; 
 	}
 }
 
@@ -521,24 +522,33 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	.pre-scrollable{
 		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
 		max-width: 100%;
-		max-height: 480px;
+		max-height: 100%;
 		overflow-y: scroll;
 		overflow-x: visible;
 	}
 	.comm{
-		height: 73%!important;
+		height: 50%!important;
 	}
 	.resp{
-		background-color: #ecf3f7; height: 55vh!important;
+		background-color: #ecf3f7; 
 	}
 }
 @media screen and (min-height: 1310px) {
-	
+	.card-bodya{
+		height: 100%;
+	}
+	.pre-scrollable{
+		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
+		max-width: 100%;
+		max-height: 80%;
+		overflow-y: scroll;
+		overflow-x: visible;
+	}
 	.comm{
-		height: 70%!important;
+		height: 55%!important;
 	}
 	.resp{
-		background-color: #ecf3f7; height: 45vh!important;
+		background-color: #ecf3f7;
 	}
 }
 .profile-head {
@@ -594,6 +604,12 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
 .comments1{
 		border-left:rgba(0, 0, 0, .1) solid 1px;
+
+		width: 50%;
+		height: 10%;
+		border-radius: 5%; 
+		margin-top: 5px; 
+		background-color: #ecf3f7;
 	}
 
 @media screen and (max-width: 780px) {
@@ -603,10 +619,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 		background-size: cover;
 		height: 50%;
 	}
-	.post-imgs {
-		/* border-radius: 5%; */
-
-	}
+	
 	.post {
 		height: auto;
 		display: flex;
@@ -615,9 +628,9 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	}
 	.comments1 {
 		width: 100%;
-		height: 100%;
-		/* border-radius: 5%; */
-		/* margin-top: 5px; */
+		height: 70%;
+		border-radius: 5%; 
+		margin-top: 5px; 
 		background-color: #ecf3f7;
 	}
 
@@ -628,9 +641,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 		height: 0.1px;
 	}
 		  
-	  .resp{
-		 height: 100%!important;
-	}
+	  
 	.gallery {
 		width: auto;
 		min-height: auto;
