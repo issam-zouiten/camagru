@@ -82,7 +82,7 @@ if (!isset($_SESSION['userid'])) :
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Password</label>
-                        <input type="text" id="input-last-name" name="new_password" class="form-control form-control-alternative" placeholder="new password">
+                        <input type="text" id="input-password" name="new_password" class="form-control form-control-alternative" placeholder="new password">
                       </div>
                     </div>
                   </div>

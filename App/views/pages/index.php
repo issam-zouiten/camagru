@@ -11,7 +11,7 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
     <div class="px-3 mt-4 mb-4">
         <div class="post card mx-auto px-0 resp">
             <div class="img-left card-bodya my-auto">
-                <img class="post-imgs shadow card-img-top" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
+                <img class="post-imgs shadow card-img-top" style="object-fit:fill;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
             </div>
             <div class="card-body comments1">
                 <h4 class="title text-center">
@@ -51,13 +51,13 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                 <div class="cardbox-comments mt-2 mt-4 input-group">
                     <input type="text" name="comment_<?php echo $post->postId; ?>" class="form-control w-50" placeholder="write a comment..." rows="1" style="resize:none; border:none"></textarea>
                     <i class="fa fa-paper-plane pt-1" data-c-user_id="<?php if (!empty($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" data-c-post_id="<?php echo $post->postId; ?>" onclick="comment(event)" style="font-size:27px;background-color: white;color:blue; ">
-                </i>
+                    </i>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-10 col-xl-9 card card1 d-flex flex-row mx-auto px-4 m-3">
-        <i class="fa fa-heart-o" data-post_id="<?php echo $post->postId; ?>" data-like_nbr="<?php echo $post->like_nbr; ?>" data-user_id="<?php if (!empty($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" onclick="like(event)" id="l_<?php echo $post->postId; ?>" name="li_<?php echo $post->postId; ?>" style="margin-right: 1rem!important;font-size:36px;color:rgb(223, 121, 172)"></i>
-    </div>
+        <div class="col-lg-10 col-xl-9 card card1 d-flex flex-row mx-auto px-4 m-3">
+            <i class="fa fa-heart-o" data-post_id="<?php echo $post->postId; ?>" data-like_nbr="<?php echo $post->like_nbr; ?>" data-user_id="<?php if (!empty($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" onclick="like(event)" id="l_<?php echo $post->postId; ?>" name="li_<?php echo $post->postId; ?>" style="margin-right: 1rem!important;font-size:36px;color:rgb(223, 121, 172)"></i>
+        </div>
     </div>
 <?php endforeach;  ?>
 <div class="text-center">

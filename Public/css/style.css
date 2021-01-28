@@ -62,7 +62,6 @@ hr {
 
 .image {
 	width: 40%;
-	height: 30vh;
 }
 
 .buttons {
@@ -114,16 +113,14 @@ label {
 #filters
 {
 	position: absolute;
-	top: 10%;
-	left: 10%;
+	top: 63%;
+	left: 0%;
+	width: 30%;
+	height: 40%;
 }
 
 .filter {
-	margin-left: 10vw!important;
-	width: 6%;
-	position: absolute;
-
-
+	width: 4%;
 }
 
 .information {
@@ -148,9 +145,6 @@ i {
 	display: none;
 }
 
-#thum {
-	height: 20rem;
-}
 
 .column {
 	background-color: #ecf3f7;
@@ -372,7 +366,9 @@ ul.pagination li a {
 ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
 
-
+.comm{
+	height: 20rem!important;
+}
 @media screen and (min-width:768px) {
 	
 	.card-bodya{
@@ -419,6 +415,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
   
   .img-left{
 	width: 50%;
+	max-height: 100%;
 	background-size: cover;
   }
   
@@ -437,35 +434,32 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	margin-bottom: 0rem;
 	font-size: 2rem;
   }
-  .pre-scrollable{
-	scrollbar-color: rgb(0, 0, 0) #ecf3f7;
-	max-width: 100%;
-	max-height: 100%;
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
 .mt{
 	margin-top: -0.2rem!important;
 }
 .resp{
-	background-color: #ecf3f7; 
+	background-color: #ecf3f7;
+	max-height: 32rem!important;
 }
 
-@media screen and (max-width: 1200px) {
-	.title { font-size: 2rem; }
-	.pre-scrollable{
-		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
+.card-img-top{
+	max-height: 45vh;
+}
+
+.pre-scrollable{
 		max-width: 100%;
 		max-height: 100%;
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
-	.comm{
-		height: 67%!important;
-	}
-	.resp{
-		background-color: #ecf3f7; 
-	}
+
+.pre-scrollable::-webkit-scrollbar {
+  width: 0;
+}
+
+
+@media screen and (max-width: 1200px) {
+	.title { font-size: 2rem; }
 	.gal{
 	margin-right: auto!important;
     margin-left: auto!important;
@@ -474,26 +468,10 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
 @media screen and (max-width: 992px) {
 	.title { font-size: 1.75rem; }
-	.pre-scrollable{
-		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
-		max-width: 100%;
-		max-height: 100%;
-		overflow-y: scroll;
-		overflow-x: visible;
-	}
-	.comm{
-		height: 50%!important;
-	}
-	.resp{
-		background-color: #ecf3f7; 
-	}
 }
 
 @media screen and (max-width: 768px) {
 	.title { font-size: 1.75rem; }
-	.resp{
-		background-color: #ecf3f7; 
-	}
 }
 
 @media screen and (max-width: 576px) {
@@ -502,53 +480,17 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
 @media screen and (min-width: 1200px) {
 	.title { font-size: 2rem; }
-	.pre-scrollable{
-		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
-		max-width: 100%;
-		max-height: 100%;
-		overflow-y: scroll;
-		overflow-x: visible;
-	}
-	.comm{
-		height: 67%!important;
-	}
-	.resp{
-		background-color: #ecf3f7; 
-	}
+
+
+
 }
 
 @media screen and (min-width: 1400px) {
 	.title { font-size: 2.25rem; }
-	.pre-scrollable{
-		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
-		max-width: 100%;
-		max-height: 100%;
-		overflow-y: scroll;
-		overflow-x: visible;
-	}
-	.comm{
-		height: 50%!important;
-	}
-	.resp{
-		background-color: #ecf3f7; 
-	}
 }
 @media screen and (min-height: 1310px) {
 	.card-bodya{
 		height: 100%;
-	}
-	.pre-scrollable{
-		scrollbar-color: rgb(0, 0, 0) #ecf3f7;
-		max-width: 100%;
-		max-height: 80%;
-		overflow-y: scroll;
-		overflow-x: visible;
-	}
-	.comm{
-		height: 55%!important;
-	}
-	.resp{
-		background-color: #ecf3f7;
 	}
 }
 .profile-head {

@@ -23,7 +23,7 @@ if (window.location.href == server_name + "/posts/add")
         
     document.getElementById('take').addEventListener("click", function(){
         context.drawImage(video, 0, 0, canvas.width, canvas.height );
-        context.drawImage(elem, 10, 10, 140, 140);
+        context.drawImage(elem, 0, 300, width * 0.3, height * 0.4);
     });
 
     document.getElementById('clear').addEventListener("click", function(){
@@ -38,8 +38,8 @@ if (window.location.href == server_name + "/posts/add")
     fillter4 = document.getElementById('fillter4');
 
     var elem = document.createElement('img');
-    elem.setAttribute("height", "100");
-    elem.setAttribute("width", "100");
+    elem.setAttribute("height", "200");
+    elem.setAttribute("width", "200");
     elem.setAttribute("id", "filters");
 
     function choose_filter()

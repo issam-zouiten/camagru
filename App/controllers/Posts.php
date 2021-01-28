@@ -42,9 +42,11 @@
 
         public function add()
         {
+            $post = $this->postModel->getPostsprofil();
             $data = [
                 'title' =>'',
-                'content' => ''
+                'content' => '',
+                'posts' => $post
             ];
             $this->view('posts/add', $data);
         }
@@ -87,15 +89,19 @@
 
         public function del_post($post_id)
         {
+            $posts =  $this->postModel->getUserByPostId($post_id);
             if($this->postModel->del($post_id))
+            {
+                $this->postModel->delcomments($post_id);
+                unlink($posts->content);
                 redirect('users/profile');
+            }
+                
             else
                 die("error");
         }
 
         public function like(){
-            
-            
             if(isset($_POST['post_id']) && isset($_POST['user_id']) && isset($_POST['c']) && isset($_POST['like_nbr']) && isLogged())
             {
                 $data = [
@@ -108,28 +114,18 @@
                  $this->postModel->like_nbr($data);
                 if($data['c'] == 'fa fa-heart')
                 {
-                  
                   if($this->postModel->deleteLike($data))
-                  {
-    
-                  }
+                  {}
                   else
-                  {
                     die('error');
-                  }
                 }
                 else if($data['c'] == 'fa fa-heart-o')
                 {
-                  
                   if($this->postModel->addLike($data))
-                  {
-                  }
+                  {}
                   else
-                  {
                     die('error');
-                  }
-                }
-                   
+                } 
              }
         }
 

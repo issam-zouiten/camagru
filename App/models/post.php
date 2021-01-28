@@ -142,4 +142,15 @@
             else
               return false;
         }
+
+        public function delcomments($post_id)
+        {
+            $this->db->query('DELETE FROM comments WHERE post_id = :postid');
+            $this->db->bind(':postid', $post_id);
+
+            if ($this->db->execute())
+                return true;
+            else
+                return false;
+        }
     }
