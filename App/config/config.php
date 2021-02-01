@@ -1,5 +1,5 @@
 <?php
-    define('DB_HOST', 'db');
+    define('DB_HOST', $_SERVER['SERVER_NAME'].':2021');
     define('DB_USER', 'root');
     define('DB_PWD', 'myrootpass');
     define('DB_NAME', 'camagru_db');

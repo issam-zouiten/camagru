@@ -80,8 +80,7 @@ if (window.location.href == server_name + "/posts/add")
             img.src = URL.createObjectURL(file);
             if (uploadImg.files.lenght != 0)
                 document.getElementById('save').disabled = false;
-            if (isCanvasEmpty(canvas))
-                document.getElementById('save').disabled = false;
+
         });
     }
 
@@ -119,14 +118,7 @@ function saveImage()
     setInterval(function(){ window.location.reload(); }, 50);
 }
 
-function isCanvasEmpty(canvas) {
-    const blank = document.createElement('canvas');
 
-    blank.width = canvas.width;
-    blank.height = canvas.height;
-
-    return canvas.toDataURL() === blank.toDataURL();
-}
 
 function enable(){
     var ab = document.getElementById("save");

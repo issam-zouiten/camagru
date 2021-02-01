@@ -6,7 +6,7 @@ if (isLogged()) {
 ?>
 <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="col-lg-10 col-xl-9 card login-card flex-row m-auto mx-auto px-0" style="background-color: #eee;">
-        <div class=" my-auto card-bodya text-center h-100 w-50">
+        <div class=" my-auto card-bodya text-center h-100 hidd">
             <h1><a class="text-dark" href="<?php echo URL_ROOT ?>" style="font-family: Billabong; font-size: 70px; text-decoration:none;">Camagru</a></h1>
         </div>
         <div class="card-body">
@@ -15,7 +15,8 @@ if (isLogged()) {
                 <div class="form-group mb-3 w-75 m-auto">
                     <input type="text" name="fullname" class="form-control form-control-lg 
                         <?php echo (!empty($data['err_fullname'])) ? 'is-invalid' : ''; ?>" placeholder="Full Name" value="<?= $data['fullname']; ?>">
-                    <span class="invalid-feedback"><? if (!empty($data['err_fullname'])){echo ($data['err_fullname']);}?></span>
+                    <span class="invalid-feedback">
+                        <? if (!empty($data['err_fullname'])){echo ($data['err_fullname']);}?></span>
                 </div>
                 <div class="form-group mb-3 w-75 m-auto">
                     <input type="email" name="email" class="form-control form-control-lg 

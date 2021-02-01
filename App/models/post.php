@@ -153,4 +153,14 @@
             else
                 return false;
         }
+        public function dellikes($post_id)
+        {
+            $this->db->query('DELETE FROM likes WHERE post_id = :postid');
+            $this->db->bind(':postid', $post_id);
+
+            if ($this->db->execute())
+                return true;
+            else
+                return false;
+        }
     }

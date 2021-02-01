@@ -6,10 +6,10 @@
 ?>
         <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
             <div class="col-lg-10 col-xl-9 card login-card flex-row m-auto mx-auto px-0" style="background-color: #eee;">
-                <div class=" my-auto card-bodya text-center h-100 w-50">
+                <div class=" my-auto card-bodya text-center h-100 hidd">
                     <h1><a class="text-dark" href="<?php echo URL_ROOT ?>" style="font-family: Billabong; font-size: 70px; text-decoration:none;">Camagru</a></h1>
                 </div>
-                <div class="card-body">
+                <div class="card-body my-auto">
                     <?php pop_up('signup_ok'); ?>
                     <?php pop_up('not_verified'); ?>
                     <p class="text-center"><strong>Sign in</strong></p>

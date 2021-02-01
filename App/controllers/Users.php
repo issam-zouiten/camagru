@@ -33,6 +33,8 @@
                     $data['err_fullname'] = 'please enter fullname !!';
                 if (empty($data['email']))
                     $data['err_email'] = 'please enter email !!';
+                else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))
+                    $data['err_email'] = 'Invalid email !!';
                 else
                 {
                     if($this->userModel->findUsrByEmail($data['email']))
@@ -290,7 +292,14 @@
 
                 if (empty($data['newPassword']))
                     $data['err_newPassword'] = 'please enter password !!';
-                
+                else if (strlen($data['newPassword']) < 6)
+                    $data['err_newPassword'] = 'Password must be at least 6 characters';
+                else if (!preg_match('@[A-Z]@', $data['newPassword']))
+                    $data['err_newPassword'] = 'Password must contain an upper case';
+                else if (!preg_match('@[a-z]@', $data['newPassword']))
+                    $data['err_newPassword'] = 'Password must contain a  lower case';
+                else if (!preg_match('@[0-9]@', $data['newPassword']))
+                    $data['err_newPassword'] = 'Password must contain a number';
                 if (empty($data['err_newPassword']))
                 {
                     $data['newPassword'] = password_hash($data['newPassword'], PASSWORD_DEFAULT);

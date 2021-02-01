@@ -1,7 +1,7 @@
 <?php
 require_once CAMAGRU_ROOT . '/Views/inc/header.php';
 require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
-if (!isset($_SESSION['userid'])) :
+if (isset($_SESSION['user_id'])) :
 ?>
   <?php pop_up('updated'); ?>
   <div class="main-content">

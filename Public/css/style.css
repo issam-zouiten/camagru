@@ -121,6 +121,7 @@ label {
 
 .filter {
 	width: 4%;
+	margin-right:10px ;
 }
 
 .information {
@@ -278,7 +279,7 @@ i {
 }
 .mono {
 	position: absolute;
-	top: 85px;
+	top: 95px;
 	right: 0vw;
 	padding: 10px 20px;
 	background: #fff;
@@ -353,7 +354,10 @@ ul.pagination {
     margin: 0;
 }
 
-ul.pagination li {display: inline; width: 3rem; margin: 2px;text-align: center;}
+ul.pagination li {
+	display: inline;
+	margin: 2px;
+	text-align: center;}
 
 ul.pagination li a {
     color: black;
@@ -382,10 +386,18 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	}
 	
 }
+.hidd{
+		width: 50%;
+	}
 @media screen and (max-width:768px) {
 	
 	.comment{
 		position: relative;
+	}
+	.hidd{
+		visibility: hidden;
+		opacity: 0;
+		width: 0vw;
 	}
 	
 }
@@ -457,7 +469,15 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
   width: 0;
 }
 
+.respon1{
+	visibility: hidden;
+	opacity: 0;
+}
 
+.respon{
+	visibility: visible;
+	opacity: 1;
+}
 @media screen and (max-width: 1200px) {
 	.title { font-size: 2rem; }
 	.gal{
@@ -472,6 +492,17 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 
 @media screen and (max-width: 768px) {
 	.title { font-size: 1.75rem; }
+	.respon1{
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.respon{
+		visibility: hidden;
+		opacity: 0;
+		width: 0vw;
+		height: 0vh;
+	}
 }
 
 @media screen and (max-width: 576px) {

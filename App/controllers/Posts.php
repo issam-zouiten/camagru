@@ -93,6 +93,7 @@
             if($this->postModel->del($post_id))
             {
                 $this->postModel->delcomments($post_id);
+                $this->postModel->dellikes($post_id);
                 unlink($posts->content);
                 redirect('users/profile');
             }
