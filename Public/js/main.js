@@ -22,12 +22,23 @@ if (window.location.href == server_name + "/posts/add")
     }
         
     document.getElementById('take').addEventListener("click", function(){
-        context.drawImage(video, 0, 0, canvas.width, canvas.height );
-        context.drawImage(elem, 0, 300, width * 0.3, height * 0.4);
+        context.drawImage(video, 0, 0, canvas.width , canvas.height);
+        context.drawImage(elem, 0, 280, canvas.width * 0.33, canvas.height * 0.45 );
+        context.drawImage(elem1, 0, 0, canvas.width * 0.3, canvas.height * 0.4 );
+        context.drawImage(elem2, 450, 330, canvas.width * 0.3, canvas.height * 0.4 );
+        context.drawImage(elem3, 450, 0, canvas.width * 0.3, canvas.height * 0.4);
     });
 
     document.getElementById('clear').addEventListener("click", function(){
         context.clearRect(0, 0, canvas.width, canvas.height);
+        fillter1.checked = false;
+        fillter2.checked = false;
+        fillter3.checked = false;
+        fillter4.checked = false;
+        document.getElementById('vi').removeChild(elem);
+        document.getElementById('vi').removeChild(elem1);
+        document.getElementById('vi').removeChild(elem2);
+        document.getElementById('vi').removeChild(elem3);
         document.getElementById('save').disabled = true;
         uploadImg.value = "";
     });
@@ -38,22 +49,53 @@ if (window.location.href == server_name + "/posts/add")
     fillter4 = document.getElementById('fillter4');
 
     var elem = document.createElement('img');
-    elem.setAttribute("height", "200");
+    elem.setAttribute("height", "300");
     elem.setAttribute("width", "200");
     elem.setAttribute("id", "filters");
+    var elem1 = document.createElement('img');
+    elem1.setAttribute("height", "300");
+    elem1.setAttribute("width", "200");
+    elem1.setAttribute("id", "filters1");
+    var elem2 = document.createElement('img');
+    elem2.setAttribute("height", "300");
+    elem2.setAttribute("width", "200");
+    elem2.setAttribute("id", "filters2");
+    var elem3 = document.createElement('img');
+    elem3.setAttribute("height", "300");
+    elem3.setAttribute("width", "200");
+    elem3.setAttribute("id", "filters3");
 
     function choose_filter()
     {
         if (fillter1.checked == true)
+        {
             elem.src = "../public/img/fillter1.png";
+            document.getElementById('vi').appendChild(elem);
+        }
+        else if (document.getElementById('filters') != null)
+            document.getElementById('vi').removeChild(elem);
         if (fillter2.checked == true)
-            elem.src = "../public/img/fillter2.png";
+        {
+            elem1.src = "../public/img/fillter2.png";
+            document.getElementById('vi').appendChild(elem1);
+        }
+        else if (document.getElementById('filters1') != null)
+            document.getElementById('vi').removeChild(elem1);
         if (fillter3.checked == true)
-            elem.src = "../public/img/fillter3.png";
+        {
+            elem2.src = "../public/img/fillter3.png";
+            document.getElementById('vi').appendChild(elem2);
+        }
+        else if (document.getElementById('filters2') != null)
+            document.getElementById('vi').removeChild(elem2);
         if (fillter4.checked == true)
-            elem.src = "../public/img/fillter4.png";
+        {
+            elem3.src = "../public/img/fillter4.png";
+            document.getElementById('vi').appendChild(elem3);
+        }
+        else if (document.getElementById('filters3') != null)
+            document.getElementById('vi').removeChild(elem3);
 
-        document.getElementById('vi').appendChild(elem);
         document.getElementById('take').disabled = false;
     }
 
@@ -75,6 +117,10 @@ if (window.location.href == server_name + "/posts/add")
             var img = new Image;
             img.onload = function () {
                 context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                context.drawImage(elem, 0, 300, 140, 140);
+                context.drawImage(elem1, 0, 0, 140, 140);
+                context.drawImage(elem2, 300, 0, 140, 140);
+                context.drawImage(elem3, 300, 300, 140, 140);
             }
             if(file && isImage(file))
             img.src = URL.createObjectURL(file);

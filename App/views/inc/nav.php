@@ -7,7 +7,7 @@
     </div>
     <?php if (isset($_SESSION['user_id'])) : ?>
       <div class="pr col-4 w-auto h-auto float-right" onclick="menuToggle()">
-        <img class="profile rounded-circlea border" src="<?php echo $_SESSION['user_img'] ?>" alt="profile">
+        <img class="profile rounded-circlea border" style="object-fit:cover;"  src="<?php echo $_SESSION['user_img'] ?>" alt="profile">
       </div>
       <div class="mono">
         <h3><strong><?php echo ucfirst($_SESSION['user_fullname']) ?></strong></h3>

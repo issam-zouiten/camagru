@@ -163,4 +163,28 @@
             else
                 return false;
         }
+
+    public function getPostById($postId)
+    {
+        $this->db->query('SELECT * FROM posts WHERE id = :postid');
+        $this->db->bind(':postid', $postId);
+
+        $result = $this->db->singleFetch();
+        if ($result)
+            return ($result);
+        else
+            return false;
+    }
+
+    public function del_cmmt($commentId)
+    {
+        $this->db->query('DELETE FROM comments WHERE id = :id and user_id = :userId');
+        $this->db->bind(':id', $commentId);
+        $this->db->bind(':userId', $_SESSION['user_id']);
+
+        if ($this->db->execute())
+            return true;
+        else
+            return false;
+    }
     }

@@ -156,4 +156,12 @@
                 }
             }
         }
+
+        public function delete_comments($commentId)
+        {
+            if ($this->postModel->del_cmmt($commentId)) {
+                redirect('posts');
+            } else
+                die("error");
+        }
     }

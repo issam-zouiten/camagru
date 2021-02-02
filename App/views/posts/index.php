@@ -36,6 +36,7 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                                                     </div>
                                                     <span class="px-4 mx-2">
                                                         <p><?php echo htmlspecialchars($comment->content); ?></p>
+                                                        <?php if ($comment->userId == $_SESSION['user_id']) : ?><a href="<?php echo URL_ROOT ?>/posts/delete_comments/<?php echo $comment->commentId; ?>" class="d-flex justify-content-end mb-3"><i class="fa fa-trash"></i></a><?php endif; ?>
                                                     </span>
                                                 </div>
                                     <?php
@@ -81,7 +82,7 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
     </div>
 <?php endforeach;  ?>
 <div class="text-center">
-    <ul class="pagination ">
+    <ul class="pagination mb-5">
         <?php
         if (($data['currentPage'] - 1) > 0)
             echo '<li class="active"><a class="page-link" href="' . URL_ROOT . '/posts?page=' . ($data['currentPage'] - 1) . '"><</a></li>';

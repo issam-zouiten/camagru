@@ -392,4 +392,14 @@
             }
 
         }
+        public function set_pdp($post_id)
+        {
+            $post = $this->postModel->getPostById($post_id);
+            if ($this->userModel->setPhoto($post->content)) {
+                $user = $this->userModel->gets_user($_SESSION['user_id']);
+                $_SESSION['user_img'] = $user->profile_img;
+                redirect('users/profile');
+            } else
+                die('error');
+        }
     }
