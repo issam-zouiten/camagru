@@ -32,9 +32,9 @@ if (isset($_SESSION['user_id'])) :
                 </div>
               </div>
               <div class="text-center pt-4 text-white">
-                <h3><?php echo ucfirst($_SESSION['user_fullname']) ?></h3>
+                <h3><?php echo htmlentities(ucfirst($_SESSION['user_fullname'])) ?></h3>
                 <div class="h5 font-weight-300 ">
-                  <p class="small mb-4"><?php echo $_SESSION['user_username'] ?></p>
+                  <p class="small mb-4"><?php echo $post->username ?></p>
                 </div>
                 <hr class="my-4">
               </div>
@@ -88,7 +88,6 @@ if (isset($_SESSION['user_id'])) :
                   </div>
                 </div>
                 <hr class="my-4">
-                <!-- Address -->
                 <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="form-check">
                   <input class="form-check-input" name="notifs" type="checkbox" <?php if ($_SESSION['notification']) echo 'checked'; ?>> Notifications in your email
@@ -112,7 +111,7 @@ if (isset($_SESSION['user_id'])) :
               <div class="p-2 mb-3 w-auto h-100">
                 <img class="card-img-top rounded w-100 mb-3 shadow gallery-img" style="height: 20rem; object-fit:cover;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
                 <div class="w-100 h-auto">
-                  <a href="<?php echo URL_ROOT; ?>/posts/del_post/<?php echo $post->postId ?>"><i class="fa fa-trash shadow h-auto" value="Delete" name="delete" style="font-size: 25px; color:#be9e98"></i></a>
+                  <a href="<?php echo URL_ROOT; ?>/posts/del_post/<?php echo $post->postId ?> ?>"><i class="fa fa-trash shadow h-auto" value="Delete" name="delete" style="font-size: 25px; color:#be9e98"></i></a>
                   <a href="<?php echo URL_ROOT; ?>/users/set_pdp/<?php echo $post->postId ?>"><i class="fa fa-pencil-square" title="set as profile pic" style="font-size: 23px; color:#be9e98"></i></a>
                 </div>
               </div>

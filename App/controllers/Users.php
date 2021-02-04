@@ -221,7 +221,7 @@
                         else
                             pop_up('signup_ok', 'Can not send email verificaton, please retry', 'alert alert-danger');
                 }
-                $this->view('users/forgot', $data); 
+                $this->view('users/login', $data); 
             }
             else 
                 die('error');
@@ -245,7 +245,7 @@
             {
                 $token = $_GET['token'];
                 
-                if ($this->userModel->verify($token))
+                if ($this->userModel->verify($token, 1))
                 {
                     pop_up('signup_ok', 'Your account is verified succesfully');
                     redirect('users/login');
@@ -267,7 +267,7 @@
                     'id' => $_GET['id']
                 ];
                 
-                if ($this->userModel->verify($data['token']))
+                if ($this->userModel->verify($data['token'], 2))
                 {
                     $this->view('users/reset', $data);
                 }
@@ -334,7 +334,7 @@
                 if($this->userModel->update_username($_POST['new_username'], $data['id']))
                 {
                     pop_up('updated', 'Username updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
-                    $_SESSION['user_username'] = $_POST['new_username'];
+                    $_SESSION['user_username'] = htmlentities($_POST['new_username']);
                     redirect('users/profile');
                 }
             }
@@ -346,7 +346,7 @@
                 if($this->userModel->update_fullname($_POST['new_fullname'], $data['id']))
                 {
                     pop_up('updated', 'Fullname updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
-                    $_SESSION['user_fullname'] = $_POST['new_fullname'];
+                    $_SESSION['user_fullname'] = htmlentities($_POST['new_fullname']);
                     redirect('users/profile');
                 }
             }
@@ -358,7 +358,7 @@
                 if($this->userModel->update_email($_POST['new_email'], $data['id']))
                 {
                     pop_up('updated', 'You need to verify the new email ✓', 'pop alert alert-success w-50 mx-auto text-center');
-                    $_SESSION['user_fullname'] = $_POST['new_fullname'];
+                    $_SESSION['user_fullname'] = htmlentities($_POST['new_fullname']);
                     redirect('users/profile');
                 }
             }
@@ -367,7 +367,7 @@
             
             if(!empty($_POST['new_password']))
             {
-                $_POST['new_password'] = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+                $_POST['new_password'] = password_hash(htmlentities($_POST['new_password']), PASSWORD_DEFAULT);
                 if($this->userModel->update_pass($_POST['new_password'], $data['id']))
                 {
                     pop_up('updated', 'Password updated ✓', 'pop alert alert-success w-50 mx-auto text-center');
@@ -395,11 +395,15 @@
         public function set_pdp($post_id)
         {
             $post = $this->postModel->getPostById($post_id);
-            if ($this->userModel->setPhoto($post->content)) {
-                $user = $this->userModel->gets_user($_SESSION['user_id']);
-                $_SESSION['user_img'] = $user->profile_img;
-                redirect('users/profile');
+            if ($this->userModel->findUsrByimgid($post->content))
+            {
+                if ($this->userModel->setPhoto($post->content)) {
+                    $user = $this->userModel->gets_user($_SESSION['user_id']);
+                    $_SESSION['user_img'] = $user->profile_img;
+                    redirect('users/profile');
+                } else
+                    die('error');
             } else
-                die('error');
+            die('image not found!!!!');
         }
     }

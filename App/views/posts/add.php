@@ -37,7 +37,7 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                         if ($post->userId == $_SESSION['user_id']) : ?>
                             <div class="rounded" id="add-gallery">
                                 <div class="">
-                                    <img class="rounded shadow my-1 " style="width:10vw; object-fit:fill;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
+                                    <img class="rounded shadow my-1 " style="width:8vw; object-fit:fill;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
                                 </div>
                             </div>
                 <?php endif;
@@ -58,7 +58,7 @@ require_once CAMAGRU_ROOT . '/Views/inc/nav.php';
                 if ($post->userId == $_SESSION['user_id']) : ?>
                     <div class="rounded" id="add-gallery">
                         <div>
-                            <img class="rounded shadow my-1 " style="height: 25vh;width:25vh; object-fit:cover;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
+                            <img class="rounded shadow my-1 " style="height: 15vh;width:15vh; object-fit:cover;" src="<?php echo $post->content; ?>" alt="<?php echo $post->title; ?>">
                         </div>
                     </div>
         <?php endif;

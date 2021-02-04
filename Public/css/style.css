@@ -173,7 +173,7 @@ i {
 
 
 .column {
-	background-color: #ecf3f7;
+	background-color: #acb2b6;
 	float: left;
 	width: 4rem;
 	height: auto;
@@ -433,7 +433,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	overflow: hidden;
 	border: 0 !important;
 	border-radius: 20px !important;
-	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.1);
   }
 
   .card1{
@@ -478,7 +478,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 	margin-top: -0.2rem!important;
 }
 .resp{
-	background-color: #ecf3f7;
+	background-color: #acb2b6;
 	max-height: 32rem!important;
 }
 
@@ -611,7 +611,7 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 		height: 10%;
 		border-radius: 5%; 
 		margin-top: 5px; 
-		background-color: #ecf3f7;
+		background-color: #acb2b6;
 	}
 
 @media screen and (max-width: 780px) {
@@ -633,9 +633,11 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 		height: 70%;
 		border-radius: 5%; 
 		margin-top: 5px; 
-		background-color: #ecf3f7;
+		background-color: #acb2b6;
 	}
-
+	.comm{
+		height: 9rem!important;
+	}
 	.title{
 		visibility: hidden;
 		opacity: 0;
@@ -643,7 +645,11 @@ ul.pagination li a:hover:not(.active) {background-color: #145979;color: white;}
 		height: 0.1px;
 	}
 		  
-	  
+	.date_cr{
+		display: none;
+		opacity: 0;
+	}
+
 	.gallery {
 		width: auto;
 		min-height: auto;

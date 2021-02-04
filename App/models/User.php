@@ -37,7 +37,7 @@
                 return false;
         }
 
-        public function verify($token)
+        public function verify($token, $nb)
         {
             $this->db->query('SELECT * FROM users WHERE token = :token');
             $this->db->bind(':token', $token);
@@ -47,12 +47,17 @@
 
         if ($this->db->rowCount() > 0)
         {
-            $this->db->query('UPDATE users SET verified = 1 WHERE token = :token');
-            $this->db->bind(':token', $token);
-            if ($this->db->execute())
-                return true;
+            if($nb == 1)
+            {
+                $this->db->query('UPDATE users SET verified = 1 WHERE token = :token');
+                $this->db->bind(':token', $token);
+                if ($this->db->execute())
+                    return true;
+                else
+                return false;
+            }
             else
-               return false;
+                return true;
         }
         else
             return false;
@@ -77,6 +82,18 @@
             $this->db->bind(':username', $username);
 
             $row = $this->db->singleFetch();
+
+            if ($this->db->rowCount() > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public function findUsrByimgid($post_img){
+
+            $this->db->query('SELECT * FROM posts WHERE content = :img AND user_id = :id');
+            $this->db->bind(':id', $_SESSION['user_id']);
+            $this->db->bind(':img', $post_img);
 
             if ($this->db->rowCount() > 0)
                 return true;

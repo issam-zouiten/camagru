@@ -48,11 +48,21 @@
         
         public function del($id)
         {
-            $this->db->query('DELETE FROM posts WHERE id = :id');
+            $this->db->query('SELECT FROM posts WHERE id = :id AND user_id = :userid');
             $this->db->bind(':id', $id);
+            $this->db->bind(':userid', $_SESSION['user_id']);
 
-            if ($this->db->execute())
-                return true;
+            if($this->db->ftchColumn() > 0)
+            {
+                $this->db->query('DELETE FROM posts WHERE id = :id AND user_id = :userid');
+                $this->db->bind(':id', $id);
+                $this->db->bind(':userid', $_SESSION['user_id']);
+                $this->db->query('SELECT count(*) FROM posts');
+                if ($this->db->execute())
+                    return true;
+                else
+                    return false;
+            }
             else
                 return false;
         }

@@ -1,4 +1,3 @@
-
 if (window.location.href == server_name + "/posts/add")
 {
     var video = document.getElementById('video'),
@@ -6,9 +5,7 @@ if (window.location.href == server_name + "/posts/add")
         context = canvas.getContext('2d'),
         uploadImg = document.getElementById('upload');
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.oGetUserMedia || navigator.msGetUserMedia;
-    if(navigator.getUserMedia){
-        navigator.getUserMedia({video:true}, streamWebCam, throwError);
-    }
+    
     function streamWebCam (stream) {
         video.srcObject = stream;
         video.play();
@@ -20,33 +17,79 @@ if (window.location.href == server_name + "/posts/add")
     function throwError (e) {
         alert(e.name);
     }
-        
-    document.getElementById('take').addEventListener("click", function(){
-        context.drawImage(video, 0, 0, canvas.width , canvas.height);
-        context.drawImage(elem, 0, 280, canvas.width * 0.33, canvas.height * 0.45 );
-        context.drawImage(elem1, 0, 0, canvas.width * 0.3, canvas.height * 0.4 );
-        context.drawImage(elem2, 450, 330, canvas.width * 0.3, canvas.height * 0.4 );
-        context.drawImage(elem3, 450, 0, canvas.width * 0.3, canvas.height * 0.4);
+    if(navigator.getUserMedia){
+        navigator.getUserMedia({video:true}, streamWebCam, throwError);
+    }   
+    function choose_filter() {
+        if (fillter1.checked == true) {
+            elem.src = "../public/img/fillter1.png";
+            document.getElementById('vi').appendChild(elem);
+        }
+        else if (document.getElementById('filters') != null) {
+            document.getElementById('vi').removeChild(elem);
+        }
+        if (fillter2.checked == true) {
+            elem1.src = "../public/img/fillter2.png";
+            document.getElementById('vi').appendChild(elem1);
+        }
+        else if (document.getElementById('filters1') != null)
+            document.getElementById('vi').removeChild(elem1);
+        if (fillter3.checked == true) {
+            elem2.src = "../public/img/fillter3.png";
+            document.getElementById('vi').appendChild(elem2);
+        }
+        else if (document.getElementById('filters2') != null)
+            document.getElementById('vi').removeChild(elem2);
+        if (fillter4.checked == true) {
+            elem3.src = "../public/img/fillter4.png";
+            document.getElementById('vi').appendChild(elem3);
+        }
+        else if (document.getElementById('filters3') != null)
+            document.getElementById('vi').removeChild(elem3);
+
+        document.getElementById('take').disabled = false;
+    }
+
+    document.getElementById('take').addEventListener("click", function () {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        if (fillter1.checked == true)
+            context.drawImage(elem, 0, 280, canvas.width * 0.33, canvas.height * 0.45);
+        if (fillter2.checked == true)
+            context.drawImage(elem1, 0, 0, canvas.width * 0.3, canvas.height * 0.4);
+        if (fillter3.checked == true)
+            context.drawImage(elem2, 450, 330, canvas.width * 0.3, canvas.height * 0.4);
+        if (fillter4.checked == true)
+            context.drawImage(elem3, 450, 0, canvas.width * 0.3, canvas.height * 0.4);
     });
 
-    document.getElementById('clear').addEventListener("click", function(){
+    document.getElementById('clear').addEventListener("click", function () {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        fillter1.checked = false;
-        fillter2.checked = false;
-        fillter3.checked = false;
-        fillter4.checked = false;
-        document.getElementById('vi').removeChild(elem);
-        document.getElementById('vi').removeChild(elem1);
-        document.getElementById('vi').removeChild(elem2);
-        document.getElementById('vi').removeChild(elem3);
+
+        if (document.getElementById('filters') != null) {
+            fillter1.checked = false;
+            document.getElementById('vi').removeChild(elem);
+        }
+        if (document.getElementById('filters1') != null) {
+            fillter2.checked = false;
+            document.getElementById('vi').removeChild(elem1);
+        }
+        if (document.getElementById('filters2') != null) {
+            fillter3.checked = false;
+            document.getElementById('vi').removeChild(elem2);
+        }
+        if (document.getElementById('filters3') != null) {
+            fillter4.checked = false;
+            document.getElementById('vi').removeChild(elem3);
+        }
         document.getElementById('save').disabled = true;
         uploadImg.value = "";
     });
 
     fillter1 = document.getElementById('fillter1'),
-    fillter2 = document.getElementById('fillter2'),
-    fillter3 = document.getElementById('fillter3'),
-    fillter4 = document.getElementById('fillter4');
+        fillter2 = document.getElementById('fillter2'),
+        fillter3 = document.getElementById('fillter3'),
+        fillter4 = document.getElementById('fillter4');
 
     var elem = document.createElement('img');
     elem.setAttribute("height", "300");
@@ -65,71 +108,40 @@ if (window.location.href == server_name + "/posts/add")
     elem3.setAttribute("width", "200");
     elem3.setAttribute("id", "filters3");
 
-    function choose_filter()
-    {
-        if (fillter1.checked == true)
-        {
-            elem.src = "../public/img/fillter1.png";
-            document.getElementById('vi').appendChild(elem);
-        }
-        else if (document.getElementById('filters') != null)
-            document.getElementById('vi').removeChild(elem);
-        if (fillter2.checked == true)
-        {
-            elem1.src = "../public/img/fillter2.png";
-            document.getElementById('vi').appendChild(elem1);
-        }
-        else if (document.getElementById('filters1') != null)
-            document.getElementById('vi').removeChild(elem1);
-        if (fillter3.checked == true)
-        {
-            elem2.src = "../public/img/fillter3.png";
-            document.getElementById('vi').appendChild(elem2);
-        }
-        else if (document.getElementById('filters2') != null)
-            document.getElementById('vi').removeChild(elem2);
-        if (fillter4.checked == true)
-        {
-            elem3.src = "../public/img/fillter4.png";
-            document.getElementById('vi').appendChild(elem3);
-        }
-        else if (document.getElementById('filters3') != null)
-            document.getElementById('vi').removeChild(elem3);
-
-        document.getElementById('take').disabled = false;
+    function isImage(file) {
+        const validImageTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+        const fileType = file['type'];
+        if (validImageTypes.indexOf(fileType))
+            return true;
+        else
+            return false;
     }
-
-    function isImage(file)
-    {
-    const validImageTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-    const fileType = file['type'];
-    if (validImageTypes.indexOf(fileType))
-        return true;
-    else
-        return false;
-    }
-
-
-    window.addEventListener('DOMContentLoaded', uploadImage);
-    function uploadImage(){
-        uploadImg.addEventListener('change', function(event) {
-        var file = event.target.files[0];
+    function uploadImage() {
+        uploadImg.addEventListener('change', function (event) {
+            var file = event.target.files[0];
             var img = new Image;
+
             img.onload = function () {
+                context.clearRect(0, 0, canvas.width, canvas.height);
                 context.drawImage(img, 0, 0, canvas.width, canvas.height);
-                context.drawImage(elem, 0, 300, 140, 140);
-                context.drawImage(elem1, 0, 0, 140, 140);
-                context.drawImage(elem2, 300, 0, 140, 140);
-                context.drawImage(elem3, 300, 300, 140, 140);
+                if (fillter1.checked == true)
+                    context.drawImage(elem, 0, 280, canvas.width * 0.33, canvas.height * 0.45);
+                if (fillter2.checked == true)
+                    context.drawImage(elem1, 0, 0, canvas.width * 0.3, canvas.height * 0.4);
+                if (fillter3.checked == true)
+                    context.drawImage(elem2, 450, 330, canvas.width * 0.3, canvas.height * 0.4);
+                if (fillter4.checked == true)
+                    context.drawImage(elem3, 450, 0, canvas.width * 0.3, canvas.height * 0.4);
+
             }
-            if(file && isImage(file))
-            img.src = URL.createObjectURL(file);
+            if (file && isImage(file))
+                img.src = URL.createObjectURL(file);
             if (uploadImg.files.lenght != 0)
                 document.getElementById('save').disabled = false;
 
         });
     }
-
+    window.addEventListener('DOMContentLoaded', uploadImage);
 }
 
 function editShow() {
