@@ -8,7 +8,7 @@ Every saved pic will appear in the app's home, where other users can like and co
 Receive notification by email when picture is commented.
 
 # Technologies
-<h1> No frameworks were allowed</hl>
+<h6> No frameworks were allowed</h6>
 <ul>
 <li>HTML, CSS, Javascript</li>
 <li>PHP, MYSQL</li>
@@ -16,7 +16,6 @@ Receive notification by email when picture is commented.
 </ul>
 
 # How_to_run
-
 You have to start LAMP, MAMP, WAMP or other apache server. Then you can clone this repo in your apache diretory like htdocs for MAMP.
 
 # Screenshots
