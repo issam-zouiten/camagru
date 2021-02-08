@@ -30,7 +30,6 @@ You have to start LAMP, MAMP, WAMP or other apache server. Then you can clone th
 
  <h2>Index</h2>
  <img width="1356" alt="home1" src="https://user-images.githubusercontent.com/36717755/107212405-36b3cb00-6a07-11eb-80de-c4d71c71aff9.png">
- <img width="1387" alt="home2" src="https://user-images.githubusercontent.com/36717755/107212423-3ca9ac00-6a07-11eb-83cd-2498f40621c6.png">
 
  <h2>Camera</h2>
  <img width="1408" alt="camera" src="https://user-images.githubusercontent.com/36717755/107212598-7bd7fd00-6a07-11eb-87cd-e4b0f85b7454.png">
