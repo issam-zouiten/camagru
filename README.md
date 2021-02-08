@@ -19,8 +19,8 @@ Receive notification by email when picture is commented.
 You have to start LAMP, MAMP, WAMP or other apache server. Then you can clone this repo in your apache diretory like htdocs for MAMP.
 
 # Screenshots
- <h3>Sign In</h3>
- <img width="1433" alt="sigin in" src="https://user-images.githubusercontent.com/36717755/107212188-dcb30580-6a06-11eb-9640-2fd34ccc492f.png">
+ <h2>Sign In</h2>
+ <img width="1345" alt="Screen Shot 2021-02-08 at 12 19 25 PM" src="https://user-images.githubusercontent.com/36717755/107212942-fa349f00-6a07-11eb-8440-791fc5be2018.png">
 
  <h3>Sign Up</h3>
  <img width="1428" alt="signup" src="https://user-images.githubusercontent.com/36717755/107212303-0cfaa400-6a07-11eb-96a3-1a70011240ba.png">
