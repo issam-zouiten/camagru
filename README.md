@@ -33,5 +33,4 @@ You have to start LAMP, MAMP, WAMP or other apache server. Then you can clone th
 
  <h2>Camera</h2>
  <img width="1408" alt="camera" src="https://user-images.githubusercontent.com/36717755/107212598-7bd7fd00-6a07-11eb-87cd-e4b0f85b7454.png">
- <img width="1398" alt="camera_fillter" src="https://user-images.githubusercontent.com/36717755/107212580-75e21c00-6a07-11eb-84d9-44e10b556385.png">
 
